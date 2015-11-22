@@ -1,0 +1,28 @@
+---
+title: JavaScript apps, progressive enhancement and the Web
+tags:
+- javascript
+- opinion
+- webstandards
+summary:
+  The progressive enhancement vs JavaScript apps debate has been bouncing around in my head for a few months,
+  and I wanted to address a couple of tenuous arguments from both sides and give my (hopefully) informed take.
+---
+<p>The progressive enhancement vs JavaScript apps debate has been bouncing around in my head for a few months.</p>
+<p>Jeremy Keith, a web standards veteran and progressive enhancement champion, recently wrote <a href="https://adactio.com/journal/8245">a thoughtful and balanced take</a> on the debate. The idea that JS apps are <em>on</em> the web but not <em>of</em> the web I think is rather apt; whilst they are accessed via a web browser and use (standardised, hopefully) web technologies, they are quite far removed from the web's original structure of HTML documents with links and forms. This is completely true, but it doesn't mean you should never make anything in this way, or that if you do you're a bad developer. As always, it depends.</p>
+<p>For a little background, I've been making progressively-enhanced web sites for a few years, and recently joined what you'd call an enterprise software company, making fairly complex web apps for the financial services industry.</p>
+<p>(I said "web apps" there, which is awkward because I agree that there is no binary distinction between "web sites" and "web apps". I do, however, think there is a continuum, with something like this blog at the "site" end and something like what I work on during the day at the "app" end.)</p>
+<p>Before moving on, I think it's worth addressing a couple of tenuous arguments from both sides:</p>
+<ul>
+<li>"If there's an error in your JS app, users will just get an empty page" &mdash; true, but no such error should <em>ever</em> make it all the way to production. If you're going to go the JS app route, you absolutely must have a solid build, test and deployment system that would catch these issues.</li>
+<li>"Search engines can index JS apps now" &mdash; so it is claimed, but I'm convinced nothing will be more readable for search engines than well-structured HTML pages at well-designed URLs.</li>
+<li>"Traditional HTML pages make for a clunky experience" &mdash; nonsense, some of the slickest, snappiest things I have used in recent years are made this way.</li>
+</ul>
+<p>Given all of this, I still think that, for the average consumer-facing web project, good old HTML pages and progressive enhancement is probably the right choice at least half the time. However, every situation is different; at work, a few conditions skew the balance in favour of JS apps:</p>
+<ul>
+<li>These products are for internal use only by the client companies, which takes search engines out of the equation.</li>
+<li>These products require a login upfront, which means we can win back some initial load time by serving the login page as traditional HTML and having the JS payload come through and initialise in the background whilst the user is filling out their credentials.</li>
+<li>Clients will provide a whitelist of browsers/platforms that must be supported.</li>
+</ul>
+<p>(Having said all of that, we have a couple of projects coming up that will be public and consumer-facing, so we're leaning toward a different approach with those. That's as important as anything &mdash; not being dogmatic about the way you build and being open to doing things differently.)</p>
+<p>While I'm happy building JS apps under the right circumstances, there's one area I differ from the emerging trends; just because JavaScript is a hard requirement, the entire concept of progressive enhancement is not simply thrown out. I still use the correct HTML elements (with extra ARIA hints where appropriate) and layer on style and behaviour depending on what the browser supports. I certainly don't re-implement form controls, links or even the DOM itself with <code>&lt;span&gt;</code>s or <code>&lt;canvas&gt;</code> &mdash; when the DOM and its native elements and attributes give you so much functionality and accessibility for free, it makes no sense to discard all that in favour of smoother animations (or whatever your excuse is).</p>

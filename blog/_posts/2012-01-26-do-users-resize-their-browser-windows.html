@@ -1,0 +1,25 @@
+---
+title: Do users resize their browser windows?
+tags:
+- rwd
+summary:
+  How many users actually resize their browser window whilst viewing your site (other than curious developers)? I've decided to find out by getting some real data.
+---
+<p>When looking at a responsively designed site in your desktop browser, it's impossible to resist resizing the browser window in and out, watching the layout respond as you do. It's an impressive way to demonstrate responsive design, but it is really relevant? How many users actually resize their browser window whilst viewing your site (other than curious developers)?</p>
+<p>By day, I work on a pretty mainstream ecommerce site, so I've decided to find out by getting some real data. If you're using jQuery and Google Analytics, you can do so as well easily enough:</p>
+<pre><code class="language-javascript">$(window).one({
+    resize: function() {  
+        _gaq.push(['_trackEvent', 'Viewport', 'Resize']);  
+    },  
+    orientationchange: function() {  
+        _gaq.push(['_trackEvent', 'Viewport', 'Orientation Change']);  
+    }  
+});
+</code></pre>
+<p>If you've not come across <code>one()</code> before, it's basically the same as <code>on()</code> but will only fire on the first instance of the event. So, if a user's viewport is resized, it will be logged by Google Analytics (but just once in any pageview, no matter how many resizes occur). This should tell us how many people really do resize their browsers.</p>
+<p>This should be interesting, especially when filtered by device/operating system &mdash; as <a href="https://twitter.com/#!/drewm/status/162485083352215552">Drew McLellan says</a>:</p>
+<blockquote><p>
+  They say users don't resize their browser. Not true. Switching device orientation is a common post-load resize.
+</p></blockquote>
+<p>Once I have a good amount of data, I'll follow up with the results.</p>
+<p><strong>Update 26th January 2012</strong>: I've added tracking that behaves in the same way to pick up <code>orientationchange</code> as well, so we'll know how many of the resizes are orientation changes and how many are actual resizes.</p>

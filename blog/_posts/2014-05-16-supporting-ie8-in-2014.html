@@ -1,0 +1,107 @@
+---
+title: Supporting IE8 in 2014
+tags:
+- browsers
+summary:
+  Whilst we all enjoy the pace of modern browser development, unfortunately IE8 is still around in significant numbers. However, we can do some things with our sites to get it to an acceptable level, without compromising on use of new technology.
+---
+<p>Whilst we all enjoy the pace of modern browser development, with new standards often in users' hands within months rather than years, unfortunately IE8 is still around in significant numbers. It was a huge step forward from IE7 &mdash; we could finally count on ordinary CSS 2.1 stuff to render reliably &mdash; but here in 2014 it has a few obvious shortcomings that will leave it struggling with modern front-end code.</p>
+<p>The project I spend most of my time on at the moment suffers from this &mdash; IE6 and IE7 users are long gone<sup id="fnref-2164-1"><a href="#fn-2164-1" rel="footnote">1</a></sup>, but a sizeable number of users are still running IE8, and that number isn't going down very slowly, <a href="http://arstechnica.com/information-technology/2014/04/one-week-before-its-end-of-life-28-percent-of-web-users-are-still-on-windows-xp/">despite Windows XP support ending</a>.</p>
+<p>Browser support <a href="http://adactio.com/journal/6692/">isn't a binary thing</a>, though &mdash; whilst IE8 won't provide as good an experience as IE11 or Chrome, we can still do some things to get it to an acceptable level, without compromising on use of new technology.</p>
+<h2>HTML5 elements</h2>
+<p>Without help, IE8 won't recognise new HTML5 elements like <code>&lt;section&gt;</code> and won't apply styles to them or their descendants. The <a href="http://www.paulirish.com/2011/the-history-of-the-html5-shiv/">long-established</a> solution is the <a href="https://github.com/aFarkas/html5shiv">HTML5 Shiv</a>, which inserts an instance of each new element to the DOM, triggering IE8 to recognise it. I use it a little differently than the documentation suggests, inlining the script to save the extra HTTP request<sup id="fnref-2164-2"><a href="#fn-2164-2" rel="footnote">2</a></sup>:</p>
+<pre><code class="language-markup">&lt;!--HTML5 Shiv 3.7.2 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed--&gt;
+&lt;!-- [if lt IE 9]&gt;
+    &lt;script&gt;!function(a,b){...&lt;/script&gt;
+&lt;![endif]--&gt;
+</code></pre>
+<p>(You'll need the <a href="https://github.com/aFarkas/html5shiv/blob/master/dist/html5shiv.min.js">latest minified version</a> of the script to insert there<sup id="fnref-2164-3"><a href="#fn-2164-3" rel="footnote">3</a></sup>.)</p>
+<h2>Media Queries</h2>
+<p>With media queries at the core of how websites are being built in 2014, they are arguably the most serious missing feature in IE8, especially when you use them the mobile-first way (which you should). <a href="https://github.com/scottjehl/Respond">Respond.js</a> is a good way around this, but personally I prefer to avoid throwing <em>more</em> JavaScript at an old browser on an old computer.</p>
+<p><a href="https://www.npmjs.org/package/grunt-stripmq">grunt-stripmq</a> is a <a href="http://gruntjs.com/">Grunt</a> plugin that parses a stylesheet and strips out the media queries based on preset values for media type, width, height, orientation etc, leaving you with just the rules that would apply to a browser with those properties (in other words, it's doing a similar job to Respond.js, but as a build step rather than on the client). To provide a stylesheet for IE8, I set it up like this in my <code>grunt.initConfig</code>:</p>
+<pre><code class="language-javascript">stripmq: {
+    options: {
+        width: 1000,
+        type: "all"
+    },
+    all: {
+        files: {
+            "css/oldie.css": ["css/style.css"]
+        }
+    }
+}
+</code></pre>
+<p>Then, I reference that stylesheet in a conditional comment for IE8 and older:</p>
+<pre><code class="language-markup">&lt;!-- [if (gte IE 9)|(IEMobile)]&gt;&lt;!--&gt;
+    &lt;link rel="stylesheet" href="/css/styles.css" /&gt;
+&lt;!--&lt;![endif]--&gt; 
+&lt;!-- [if (lte IE 8)&amp;(!IEMobile)]&gt;
+    &lt;link rel="stylesheet" href="/css/oldie.css" /&gt;
+&lt;![endif]--&gt;
+</code></pre>
+<p>(The <code>IEMobile</code> bits stop the IE8 stylesheet being served to IE on Windows Phone 7, which will do better with the regular mobile-first stylesheet even though it doesn't support media queries.)</p>
+<h2>SVG</h2>
+<p>SVG has really started to gain traction in the last year or so, and with good reason &mdash; as raster images become increasingly troublesome on a web with almost infinite viewport size and pixel density combinations, SVG is a better option for almost any image except a photo.</p>
+<p>Of course, IE8 doesn't support SVG, so you'll need to <a href="http://davidgoss.co.uk/2013/01/30/use-svg-for-your-logo-and-still-support-old-ie-and-android/">provide a PNG fallback</a>.</p>
+<h2>Fonts</h2>
+<p>Microsoft, who have always worked hard on typography-related stuff, actually beat the other browser vendors to <code>@font-face</code> support by many years, albeit with the proprietary EOT format until much more recently. The excellent <a href="http://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel webfont generator</a> will take care of producing the EOT version for you, and your <code>@font-face</code> declarations will look something like this:</p>
+<pre><code class="language-css">@font-face {
+    font-family: 'Wingdings';
+    src: url('../fonts/wingdings.eot');
+    src: url('../fonts/wingdings.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/wingdings.woff') format('woff'),
+         url('../fonts/wingdings.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+</code></pre>
+<h2>JavaScript</h2>
+<p>If you're using jQuery in your project, this part is going to be straightforward. A lot of people are questioning how necessary jQuery is in this new age of <code>querySelectorAll</code> and CSS transitions, but for me its main strength isn't shorthands, but cross-browser support.</p>
+<p>The jQuery 1.x branch still supports IE6--8, and is API compatible with the leaner 2.x branch (which works in modern browsers only). Some more conditional comments<sup id="fnref-2164-4"><a href="#fn-2164-4" rel="footnote">4</a></sup> will ensure we serve the best version for every browser (this goes just before the `` closing tag for best performance):</p>
+<pre><code class="language-markup">&lt;!-- [if gte IE 9]&gt;&lt;!--&gt;
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!--&lt;![endif]--&gt;
+&lt;!-- [if lte IE 8]&gt;
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+&lt;script src="/js/main.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>If you're not using jQuery but writing plain JS, don't despair &mdash; IE8's JavaScript support isn't <em>terrible</em>:</p>
+<ul>
+<li><code>querySelector</code> and <code>querySelectorAll</code> are supported, although weirdly <code>getElementsByClassName</code> isn't</li>
+<li><code>XMLHttpRequest</code> is supported (although many newer XHR features are missing)</li>
+<li><code>localStorage</code> is supported</li>
+<li><code>addEventListener</code> is missing, but you can <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener#Compatibility">use the similar (proprietary) <code>attachEvent</code></a> instead without much trouble</li>
+</ul>
+<p>Most of the new shiny HTML5 features like <code>&lt;canvas&gt;</code> and AppCache aren't there, but the ones listed above are enough for most regular DOM scripting.</p>
+<p>Alternatively, think about whether your site works without the JavaScript (ideally it should). If it does, then you have the option of just not running it on IE8 and below. The BBC's "cut the mustard" test works brilliantly for this, by doing a quick feature test to decide whether the browser is modern enough to run the script:</p>
+<pre><code class="language-javascript">if ('querySelector' in document &amp;&amp;
+    'addEventListener' in window &amp;&amp;
+    'localStorage' in window) {
+    var s = document.createElement('script');
+    s.src = '/js/main.js';
+    document.body.appendChild(s);
+}
+</code></pre>
+<p>(As well as IE8 and below, this test will also save the script from being downloaded and executed on a lot of feature phones and lower end smartphones where it would do more harm than good.)</p>
+<h2>Testing</h2>
+<p>Since, as a web developer, the chances of IE8 being on your main computer are basically zero, you'll need to set something up to test your work. Browser modes in IE9--11 (accessible via the developer tools) are a useful way to test often as you work, but they aren't a perfect representation, so a real running instance is essential. <a href="http://www.browserstack.com/">Browserstack</a> is great for this, but there's also a good chance that someone you know has an old Windows XP laptop gathering dust in a cupboard &mdash; take it off their hands and use it as a test device.</p>
+<h2>What about IE6 and IE7?</h2>
+<p>Unlike IE8, which has a solid baseline of CSS 2.1 support, IE6 and IE7 are going to struggle even with relatively simple front-ends. Providing workarounds to give users on these browsers a recognisable version of the experience you designed is going to be very costly (if it's even possible), so it might be worth entertaining the idea of just serving them the HTML with a <a href="http://stuffandnonsense.co.uk/blog/about/universal_internet_explorer_6_css">simple, type-friendly stylesheet</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-2164-1">
+The site's users are in the UK, Europe and North America. I know, though, that in the rest of the world, particularly Asia and Africa, it's a different story &mdash; <a href="http://www.techinasia.com/china-ie6/">IE6 is very much alive</a>.&#160;<a href="#fnref-2164-1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-2164-2">
+Aside from the extra few kilobytes in the <code>&lt;head&gt;</code>, there's no performance hit for modern browsers, as they'll just see a comment and won't actually parse the JavaScript.&#160;<a href="#fnref-2164-2" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-2164-3">
+There's <a href="https://github.com/aFarkas/html5shiv/blob/master/dist/html5shiv-printshiv.min.js">another version</a> that also does the same job for printing, if that's required in your case.&#160;<a href="#fnref-2164-3" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-2164-4">
+What, <em>more</em> conditional comments? Yes, I know they're very un-standards, but next to the alternatives &mdash; UA sniffing and weird hacks born of implementation bugs &mdash; they're the least inelegant.&#160;<a href="#fnref-2164-4" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>

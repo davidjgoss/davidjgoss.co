@@ -15,5 +15,18 @@ url: "http://davidjgoss.github.io" # the base hostname & protocol for your site
 twitter_username: davidjgoss
 github_username:  davidjgoss
 
+# Layout settings
+defaults:
+  -
+    scope:
+      path: "blog"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "links"
+    values:
+      layout: "post"
+
 # Build settings
 markdown: kramdown

@@ -1,0 +1,30 @@
+---
+title: CSS Preprocessors and brain rot
+tags:
+- css
+- opinion
+- sass
+summary:
+  Is Sass "rotting developers' brains" as Paul Lloyd suggests? I think it depends on what sort of developer you are, how judiciously you use the tool, and how mindful you are of its output.
+---
+<p>Seeing this tweet today triggered me to write this post, which I've been meaning to write for a couple of weeks:</p>
+<blockquote class="twitter-tweet" lang="en"><p>Overheard: “I’ve forgotten how to write CSS”. &#10;&#10;Sass: rotting developers brains since 2007.&mdash; Paul Lloyd (@paulrobertlloyd) <a href="https://twitter.com/paulrobertlloyd/statuses/466246851268972545">May 13, 2014</a></p></blockquote>
+<p>I've only started using Sass in the last few months. I resisted it for a long time, because I felt like my job was hand-writing pure CSS and that hand-writing would always be the best way. Perhaps a little part of me felt like a manual labourer at threat of being made redundant by automation.</p>
+<p>Anyway, I'm a happy Sass user now<sup id="fnref-2186:1"><a href="#fn-2186:1" rel="footnote">1</a></sup>; my stylesheets are getting written faster and are easier to maintain, but the generated CSS is not of worse quality. I think the key to this is understanding what each Sass feature is actually doing and thinking about what impact it has on the output as you work, as opposed to just doing what's easiest/shortest to write<sup id="fnref-2186:2"><a href="#fn-2186:2" rel="footnote">2</a></sup>. I think it's also a good exercise to regularly look at the generated CSS and see if there's anything there you wouldn't have written yourself.</p>
+<p>Using Sass certainly doesn't have to mean using <em>all</em> of Sass. For the project I'm working on right now, I use <code>@import</code> for modulation, variables for a few oft-used values, sensible nesting<sup id="fnref-2186:3"><a href="#fn-2186:3" rel="footnote">3</a></sup>, and a handful of mixins (mostly for prefixed properties). I almost never use <code>@extend</code> and to date haven't touched any of the more advanced features like conditionals or loops.</p>
+<p>Like any tool, Sass (or LESS or whatever) should be used with care and restraint, but I think whether or not it rots your brain depends on your attitude. If you start using Sass and think "Great &mdash; I'll never need to write CSS again!" then your brain is probably doomed, but if you only use what you need and be mindful of the output it can be really beneficial.</p>
+<p>Finally, I'd also say that if you're still learning CSS, jumping into Sass is probably a bad move. Master the fundamentals of CSS first and <em>then</em> start using Sass to make you more efficient.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-2186:1">
+Not all the time, though &mdash; for smaller projects like one-page sites I tend to go without it. Writing in plain CSS some of the time will not do your brain any harm, and will highlight the areas Sass can help you in.&#160;<a href="#fnref-2186:1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-2186:2">
+For example, if you overdo it with nesting and mixins in particular, your SCSS files might look tidy and concise but your generated CSS could be a bloated monstrosity.&#160;<a href="#fnref-2186:2" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-2186:3">
+A good rule of thumb: any more than one level deep and you're <a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">probably doing it wrong</a>.&#160;<a href="#fnref-2186:3" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>

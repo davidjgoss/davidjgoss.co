@@ -1,0 +1,27 @@
+---
+title: Use SVG for a Logo with Solid Fallbacks
+tags:
+- svg
+summary:
+  Logos are well-suited to SVG, but browser support isn't quite there yet in places, so how can we reliably fall back to a PNG
+  without unnecessary HTTP requests and lots of JavaScript?
+---
+<p>With responsive design and retina displays becoming the norm, bitmap images are becoming a sticking point; they simply don't fit in with our flexible and resolution-independent web. So, it makes sense to use vector images instead wherever it's appropriate, and one great place to do this is logos.</p>
+<p>A logo is typically made up of type and other vector shapes, and is therefore well-suited to <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> &mdash; it may save some file size and will scale up elegantly when the user zooms in or on retina displays. The <a href="http://caniuse.com/svg">"Can I use SVG?"</a> support chart looks great...with the exception of IE&lt;9 and Android 2.x. This pattern supports those (and other non-SVG) browsers without more JavaScript or HTTP requests than necessary.</p>
+<pre><code class="language-markup">&lt;a class="site-logo" href="/"&gt;
+    &lt;!--[if gte IE 9]&gt;&lt;!--&gt;&lt;img alt="Acme Supplies" src="logo.svg" data-fallback="logo.png" onerror="this.src=this.getAttribute('data-fallback');this.onerror=null;" /&gt;&lt;!--&lt;![endif]--&gt;
+    &lt;!--[if lt IE 9]&gt;&lt;img alt="Acme Supplies" src="logo.png" /&gt;&lt;![endif]--&gt;
+&lt;/a&gt;
+</code></pre>
+<p>The way we've used conditional comments here<sup id="fnref-1601:1"><a href="#fn-1601:1" rel="footnote">1</a></sup> means that IE8 and below will get the PNG fallback without any JavaScript or extra HTTP requests, whilst other non-SVG-supporting browsers such as Android 2.x will try to use the SVG version, fail, and then use the fallback PNG instead thanks to the inline <code>onerror</code> handler<sup id="fnref-1601:2"><a href="#fn-1601:2" rel="footnote">2</a></sup>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-1601:1">
+Incidentally, you could save a few characters by using <code>[if IE 9]</code> for the first conditional comment, as IE10 and up will no longer use conditional comments, but for the person (possibly you) who looks at your markup in 6 months' time and wonders what's going on, the longer statement makes a bit more sense.&#160;<a href="#fnref-1601:1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-1601:2">
+If you're looking at the markup thinking "but I use a background image to display my logo", then you should read <a href="http://csswizardry.com/2010/10/your-logo-is-an-image-not-a-h1/">this post by Harry Roberts</a> about why you should use an <code>&lt;img&gt;</code> tag instead.&#160;<a href="#fnref-1601:2" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>

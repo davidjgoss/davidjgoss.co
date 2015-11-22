@@ -1,0 +1,30 @@
+---
+title: Users do resize their browser windows (maybe)
+tags:
+- rwd
+summary:
+  Having written about the misconception people have about users never resizing their browser window and vowed to find out the truth,
+  I gathered some stats on a mainstream ecommerce site, but the numbers don't really add up.
+---
+<p>Back in January, I wrote about the misconception people have about users never resizing their browser window, and <a href="/2012/01/26/do-users-resize-their-browser-windows">vowed to find out the truth</a> by tracking resizes for a mainstream website.</p>
+<p>To recap, I inserted a snippet of jQuery into every page of the site, which would report the first instance of a window resize and/or an orientation change to Google Analytics for each pageview.</p>
+<p>Here are the key numbers for the period I tested:</p>
+<ul>
+<li>19,124 visits</li>
+<li>3,859 unique resizes</li>
+<li>262 unique orientation changes</li>
+</ul>
+<p>Here's what that data is telling us:</p>
+<ul>
+<li>20.17% of visits had a viewport resize at some point during their session</li>
+<li>Of those resizes, only 6% were an orientation change</li>
+</ul>
+<p>Sadly, those numbers immediately call the validity of the data into question --- they simply <em>can't</em> be right. It seems the <code>resize</code> event is not reliable when used in this way. I tried to think about things that could trigger a <code>resize</code> event and skew the data:</p>
+<ul>
+<li>Something causes the vertical scrollbar to be shown/hidden, changing the size of the viewport</li>
+<li>A piece of browser chrome, like a toolbar or extension, is shown/hidden, changing the size of the viewport (the "Find in this page" function on IE, Firefox and Opera is a good example)</li>
+<li>The browser goes into full screen mode, changing the size of the viewport.</li>
+</ul>
+<p>Since this data is clearly unreliable, I need to find another way to gather the right stats. I'm thinking about measuring the viewport dimensions once on document ready, then again every second, and reporting it as a resize if it's changed 50px or more in either dimension. I'll do some testing with this idea and update this post soon.</p>
+<p><strong>Update 17th March 2014</strong>: I'm running the experiment again, on the same site, but this time with a <a href="https://gist.github.com/davidjgoss/9608808">better detection script</a>, which only reports a resize if <code>clientWidth</code> or <code>clientHeight</code> has changed by 50px or more since the document first loaded. It also doesn't depend on jQuery any more. I'll report back in 10 days.</p>
+<p><strong>Update 15th April 2014</strong>: <a href="http://davidgoss.co.uk/2014/04/15/users-do-resize-their-browser-windows-take-2/">New findings here</a>.</p>

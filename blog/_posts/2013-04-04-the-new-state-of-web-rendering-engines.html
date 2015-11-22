@@ -1,0 +1,70 @@
+---
+title: The new state of web rendering engines
+tags:
+- browsers
+summary:
+  In just the past day, the world of web rendering engines has changed quite dramatically, with the announcements of both Servo and Blink.
+  Here's the new look across the four major platforms.
+---
+<p>In just the past day, the world of web rendering engines has changed quite dramatically, with the announcements of both <a href="http://blog.mozilla.org/blog/2013/04/03/mozilla-and-samsung-collaborate-on-next-generation-web-browser-engine/">Servo</a> and <a href="http://blog.chromium.org/2013/04/blink-rendering-engine-for-chromium.html">Blink</a>.</p>
+<p>Here's the new look across the four major platforms &mdash; far from a "WebKit monoculture", I'd say.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Platform</th>
+<th scope="col">Chrome</th>
+<th scope="col">Safari</th>
+<th scope="col">Firefox</th>
+<th scope="col">Opera</th>
+<th scope="col">IE</th>
+<th scope="col">Browser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Windows</th>
+<td>Blink</td>
+<td class="na">NA</td>
+<td>Gecko*</td>
+<td>Blink</td>
+<td>Trident</td>
+<td class="na">NA</td>
+</tr>
+<tr>
+<th scope="row">Mac</th>
+<td>Blink</td>
+<td>WebKit</td>
+<td>Gecko*</td>
+<td class="na">NA</td>
+<td class="na">NA</td>
+<td class="na">NA</td>
+</tr>
+<tr>
+<th scope="row">iOS</th>
+<td>WebKit***</td>
+<td>WebKit</td>
+<td class="na">NA</td>
+<td>WebKit***</td>
+<td class="na">NA</td>
+<td class="na">NA</td>
+</tr>
+<tr>
+<th scope="row">Android</th>
+<td>Blink</td>
+<td class="na">NA</td>
+<td>Gecko*</td>
+<td>Blink</td>
+<td class="na">NA</td>
+<td>WebKit**</td>
+</tr>
+</tbody>
+</table>
+<p>&#42; May move to Servo<br />
+** May move to Servo on Samsung devices<br />
+*** Will move to Blink if and when Apple allows 3rd party engines</p>
+<p>A few notes:</p>
+<ul>
+<li>Opera's recent move away from Presto was not to WebKit, but to Chromium, so they're moving to Blink as well (<a href="http://www.brucelawson.co.uk/2013/hello-blink/">confirmed by Bruce Lawson</a>).</li>
+<li>With Chrome and Opera moving to Blink and Safari being retired, there soon won't be a WebKit browser on Windows (<a href="https://twitter.com/dstorey/status/319588119517200384">pointed out by David Storey</a>).</li>
+<li>Blink will not use vendor prefixes, except existing <code>-webkit-</code> ones that will be phased out as their features mature. This is <em>great</em> news.</li>
+</ul>
