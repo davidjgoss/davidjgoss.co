@@ -1,0 +1,22 @@
+$base-font: "gaspar-wf", "Georgia", serif;
+$heading-font: "antonio-wf", "Helvetica", sans-serif;
+
+$base-color: #333;
+$quote-color: #666;
+$fade-color: #888;
+$shade-color: #eaeaea;
+
+$link-color: rgb(172, 195, 20);
+$link-color-shade: rgba(172, 195, 20, 0.1);
+
+$cv-color: rgb(29, 77, 148);
+$cv-color-shade: rgba(29, 77, 148, 0.25);
+$cv-color-stripe: rgba(0, 42, 244, 0.05);
+
+@mixin clearfix() {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

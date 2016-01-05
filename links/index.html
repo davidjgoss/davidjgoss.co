@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+
+<header class="archive-header">
+  <h1 class="page-heading">Links</h1>
+</header>
+
+  <div class="post-list">
+    {% for post in site.categories.links %}
+      {% include listing-links.html %}
+    {% endfor %}
+  </div>

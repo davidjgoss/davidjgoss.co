@@ -1,0 +1,50 @@
+.byline {
+	color: $fade-color;
+}
+
+.byline__permalink {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.byline__date,
+.byline__source {
+	font-weight: bold;
+}
+
+.byline__split {
+	font-style: italic;
+}
+
+.byline__tag {
+    padding: 0 0.125em;
+    border: 1px solid $link-color;
+    border-radius: 0.25em;
+}
+
+.entry--list {
+	margin-bottom: 2.5em;
+}
+
+.entry--full  {
+    .byline {
+        margin-bottom: 1.5rem;
+    }
+
+    .long-form > :first-child {
+        font-size: 1.25em;
+    }
+}
+
+.entry--links {
+	padding-left: 1em;
+	border-left: 0.1em solid $link-color;
+
+    .entry__title a {
+        color: $quote-color;
+    }
+
+    .entry__go {
+        margin-top: 1.5em;
+    }
+}

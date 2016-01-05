@@ -12,21 +12,25 @@ description: > # this means to ignore newlines until "baseurl:"
   The personal site of David Goss, a web developer from the UK
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://davidjgoss.github.io" # the base hostname & protocol for your site
-twitter_username: davidjgoss
-github_username:  davidjgoss
+permalink: /:year/:month/:day/:title/
 
 # Layout settings
 defaults:
   -
     scope:
+      path: ""
+    values:
+      author: "David Goss"
+  -
+    scope:
       path: "blog"
     values:
-      layout: "post"
+      layout: "post-blog"
   -
     scope:
       path: "links"
     values:
-      layout: "post"
+      layout: "post-links"
 
 # Build settings
 markdown: kramdown

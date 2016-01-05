@@ -1,0 +1,4 @@
+.u-group,
+.u-clearfix {
+    @include clearfix();
+}

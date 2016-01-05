@@ -1,0 +1,67 @@
+.site-header {
+    @include clearfix();
+	margin-bottom: 2.5em;
+}
+
+.site-logo {
+	float: left;
+	background: $link-color;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: $heading-font;
+	font-size: 1.5em;
+	padding: 0.5em;
+    padding-top: 2em;
+	border: 1px solid $link-color;
+}
+
+.site-nav {
+    @include clearfix();
+    clear: both;
+	list-style: none;
+	text-transform: uppercase;
+	font-family: $heading-font;
+	font-size: 1.25em;
+	padding-top: 0.5em;
+
+	li {
+		display: inline-block;
+
+		&:after {
+			content: "|";
+			color: $link-color;
+			padding-left: .25em;
+		}
+
+		&:last-child:after {
+			content: "";
+		}
+	}
+
+	a {
+		color: $quote-color;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $base-color;
+		}
+	}
+
+	@media all and (min-width:600px) {
+		clear: none;
+		float: left;
+		padding: 2.5em 0 0 0.75em;
+	}
+}
+
+.main {
+	margin-bottom: 2.5em;
+}
+
+.site-info {
+	color: $quote-color;
+	text-align: center;
+	font-size: 0.75em;
+	line-height: 1.25em;
+}
