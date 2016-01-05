@@ -4,12 +4,20 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I'm David Goss, a 28-year-old British web developer living in Milton Keynes. Currently I work for a consulting company on UIs for finance industry web apps. [Read my full CV](/cv/).
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+Although like most people who work on the web I'm something of a generalist, at heart I'm a front-end developer --- HTML, CSS and JavaScript are what I do. I also take a more-than-casual interest in responsive design, front-end performance and code quality.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+I use this personal site to blog (not often enough) about web development and to link to interesting posts from other, smarter people. Other than here, you can find me in all the obvious places --- having opinions on [Twitter](http://twitter.com/davidjgoss), sharing code on [GitHub](http://github.com/davidjgoss), and answering questions on [StackOverflow](http://stackoverflow.com/users/2235953/david-goss).
+
+- - -
+
+## Colophon ##
+
+I design and code this site myself. I tend to start with pen and paper and then move straight to designing in the browser. The body text is set in [*Gaspar*](http://www.fontsquirrel.com/fonts/gaspar), and the headlines are in [*Antonio*](http://www.fontsquirrel.com/fonts/antonio), both of which are free to use under their respective licences.
+
+These days, I'm using a 13" MacBook Air. I use [WebStorm](https://www.jetbrains.com/webstorm/) as my editor/IDE when working on this and most other projects, although I tend to use [Sublime Text](http://www.sublimetext.com/) for writing posts (in [Markdown](https://daringfireball.net/projects/markdown/), of course). [Chrome](https://www.google.com/chrome/) is my development browser.
+
+I use [Sass](http://sass-lang.com/) (the SCSS flavour) to write my CSS from scratch; the only CSS "framework" I use is my [modern reset](https://github.com/davidjgoss/modern-reset). The syntax highlighting in code examples is done with Lea Verou's [Prism](http://prismjs.com/).
+
+The site is built using [Jekyll](http://jekyllrb.com) and served via [GitHub Pages](https://pages.github.com). The source is [available on GitHub](https://github.com/davidjgoss/davidjgoss.github.io) and licensed under the [MIT license](https://opensource.org/licenses/MIT).
