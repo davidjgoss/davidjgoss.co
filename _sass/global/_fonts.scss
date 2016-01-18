@@ -1,4 +1,32 @@
 @font-face {
+    font-family: "overpass-wf";
+    src: url("../../fonts/overpass/Overpass-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "overpass-wf";
+    src: url("../../fonts/overpass/Overpass-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "overpass-wf";
+    src: url("../../fonts/overpass/Overpass-Light-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "overpass-wf";
+    src: url("../../fonts/overpass/Overpass-Bold-Italic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
     font-family: "gaspar-wf";
     src: url("../../fonts/gaspar-regular.eot");
     src: url("../../fonts/gaspar-regular.eot?#iefix") format("embedded-opentype"),

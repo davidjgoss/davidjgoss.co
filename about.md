@@ -14,7 +14,7 @@ I use this personal site to blog (not often enough) about web development and to
 
 ## Colophon ##
 
-I design and code this site myself. I tend to start with pen and paper and then move straight to designing in the browser. The body text is set in [*Gaspar*](http://www.fontsquirrel.com/fonts/gaspar), and the headlines are in [*Antonio*](http://www.fontsquirrel.com/fonts/antonio), both of which are free to use under their respective licences.
+I design and code this site myself. I tend to start with pen and paper and then move straight to designing in the browser. The text is set in [Overpass](http://overpassfont.org/), which is free and open source.
 
 These days, I'm using a 13" MacBook Air. I use [WebStorm](https://www.jetbrains.com/webstorm/) as my editor/IDE when working on this and most other projects, although I tend to use [Sublime Text](http://www.sublimetext.com/) for writing posts (in [Markdown](https://daringfireball.net/projects/markdown/), of course). [Chrome](https://www.google.com/chrome/) is my development browser.
 

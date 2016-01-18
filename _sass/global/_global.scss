@@ -1,7 +1,7 @@
 html {
 	background: #fff;
 	color: $base-color;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: $base-font;
 	padding: 0 1em;
 	border-top: 0.25em solid $link-color;
@@ -13,7 +13,7 @@ html {
 
 body {
     line-height: 1.5em;
-	max-width: 40em;
+	max-width: 720px;
 	margin: 0 auto;
 }
 
@@ -23,6 +23,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $heading-font;
+	font-weight: bold;
 	text-transform: uppercase;
 
     a {
@@ -32,23 +33,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 3em;
-	line-height: 1.1em;
+	font-size: 2.5em;
+	line-height: 1em;
 }
 
 h2 {
 	font-size: 2em;
-	line-height: 1.2em;
+	line-height: 1em;
 }
 
 h3 {
 	font-size: 1.5em;
-	line-height: 1.25em;
+	line-height: 1em;
 }
 
 h4 {
 	font-size: 1.25em;
-	line-height: 1.25em;
+	line-height: 1rem;
 }
 
 blockquote {
