@@ -1,6 +1,4 @@
 pre, code, kbd {
-	background-color: #f5f2f0;
-	color: #000;
 	font-size: 1em;
 	font-family: "Consolas", "Monaco", "Courier New", "Courier", monospace;
 	word-spacing: normal;
@@ -12,25 +10,14 @@ pre, code, kbd {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-
-	&::selection {
-		background-color: #b3d4fc;
-	}
 }
 
 pre {
+	background-color: #272822;
+	color: #f8f8f2;
 	padding: 1.5em;
 	white-space: pre;
 	overflow: auto;
-}
-
-code, kbd {
-	padding: .2em .4em;
-}
-
-pre code, pre kbd {
-	background-color: transparent;
-	padding: 0;
 }
 
 .token.comment,
@@ -41,7 +28,7 @@ pre code, pre kbd {
 }
 
 .token.punctuation {
-	color: #999;
+	color: #f8f8f2;
 }
 
 .namespace {
@@ -50,18 +37,24 @@ pre code, pre kbd {
 
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
-.token.symbol {
-	color: #905;
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
 }
 
 .token.selector,
 .token.attr-name,
 .token.string,
-.token.builtin {
-	color: #690;
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
 }
 
 .token.operator,
@@ -70,24 +63,30 @@ pre code, pre kbd {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-	color: #a67f59;
-	background: hsla(0,0%,100%,.5);
+	color: #f8f8f2;
 }
 
 .token.atrule,
 .token.attr-value,
-.token.keyword {
-	color: #07a;
+.token.function {
+	color: #e6db74;
 }
 
+.token.keyword {
+	color: #66d9ef;
+}
 
 .token.regex,
 .token.important {
-	color: #e90;
+	color: #fd971f;
 }
 
-.token.important {
+.token.important,
+.token.bold {
 	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
 }
 
 .token.entity {
