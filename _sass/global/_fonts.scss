@@ -1,27 +1,77 @@
 @font-face {
     font-family: "overpass-wf";
-    src: url("../../fonts/overpass/overpass-light.woff") format("woff");
+    src: url("../../fonts/overpass/Overpass-Light.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "overpass-wf";
-    src: url("../../fonts/overpass/overpass-bold.woff") format("woff");
+    src: url("../../fonts/overpass/Overpass-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: "overpass-wf";
-    src: url("../../fonts/overpass/overpass-light-italic.woff") format("woff");
+    src: url("../../fonts/overpass/Overpass-Light-Italic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: "overpass-wf";
-    src: url("../../fonts/overpass/overpass-bold-italic.woff") format("woff");
+    src: url("../../fonts/overpass/Overpass-Bold-Italic.ttf") format("truetype");
     font-weight: bold;
     font-style: italic;
+}
+
+@font-face {
+    font-family: "gaspar-wf";
+    src: url("../../fonts/gaspar-regular.eot");
+    src: url("../../fonts/gaspar-regular.eot?#iefix") format("embedded-opentype"),
+         url("../../fonts/gaspar-regular.woff") format("woff"),
+         url("../../fonts/gaspar-regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "gaspar-wf";
+    src: url("../../fonts/gaspar-bold.eot");
+    src: url("../../fonts/gaspar-bold.eot?#iefix") format("embedded-opentype"),
+         url("../../fonts/gaspar-bold.woff") format("woff"),
+         url("../../fonts/gaspar-bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "gaspar-wf";
+    src: url("../../fonts/gaspar-italic.eot");
+    src: url("../../fonts/gaspar-italic.eot?#iefix") format("embedded-opentype"),
+         url("../../fonts/gaspar-italic.woff") format("woff"),
+         url("../../fonts/gaspar-italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "gaspar-wf";
+    src: url("../../fonts/gaspar-bolditalic.eot");
+    src: url("../../fonts/gaspar-bolditalic.eot?#iefix") format("embedded-opentype"),
+         url("../../fonts/gaspar-bolditalic.woff") format("woff"),
+         url("../../fonts/gaspar-bolditalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "antonio-wf";
+    src: url("../../fonts/antonio.eot");
+    src: url("../../fonts/antonio.eot?#iefix") format("embedded-opentype"),
+         url("../../fonts/antonio.woff") format("woff"),
+         url("../../fonts/antonio.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
