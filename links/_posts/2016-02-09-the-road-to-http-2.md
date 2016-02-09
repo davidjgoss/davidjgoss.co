@@ -1,5 +1,5 @@
 ---
-title: The Road to HTTP/2: Casual Migration or Forced Relocation?
+title: "The Road to HTTP/2: Casual Migration or Forced Relocation?"
 meta:
   linked_url: https://medium.com/@erin_lynch/the-road-to-http-2-casual-migration-or-forced-relocation-1ce033564a06
 ---
