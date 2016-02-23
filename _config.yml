@@ -34,3 +34,9 @@ defaults:
 
 # Build settings
 markdown: kramdown
+highlighter: 0
+kramdown:
+  input: GFM
+  syntax_highlighter: 0
+  syntax_highlighter_opts:
+    disable: true
