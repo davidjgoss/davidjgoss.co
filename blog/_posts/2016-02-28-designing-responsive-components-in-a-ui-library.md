@@ -5,10 +5,10 @@ tags:
 - rwd
 - design
 summary:
-  I've been working on a standard CSS framework and UI library at work for the past little while, and it's thrown up some tricky challenges. One of the more interesting ones has been that of how design components to be responsive without knowing which context(s) they'll be used in.
+  I've been working on a standard CSS framework and UI library at work for the past little while, and it's thrown up some tricky challenges. One of the more interesting ones has been that of how to design components to be responsive without knowing which context(s) they'll be used in.
 ---
 
-I've been working on a standard CSS framework and UI library at work for the past little while, and it's thrown up some tricky challenges. One of the more interesting ones has been that of how design components to be responsive without knowing which context(s) they'll be used in.
+I've been working on a standard CSS framework and UI library at work for the past little while, and it's thrown up some tricky challenges. One of the more interesting ones has been that of how to design components to be responsive without knowing which context(s) they'll be used in.
 
 Designing a UI library component in isolation is quite a pleasant task. I can tackle its "default" presentation first[^1], then try some different viewport sizes and write alternate styles within media queries where the default stops looking right. Great!
 
