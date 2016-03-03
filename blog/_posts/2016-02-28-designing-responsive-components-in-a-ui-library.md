@@ -40,7 +40,27 @@ I've been designing and building this UI library at the same time as designing s
 
 The concept of container queries, where you would be able to write alternate styles for a component based on the dimensions of *the container it's in* would solve this problem. In fact, container queries (or "element queries" as some call them) would be nothing short of revolutionary to the world of UI libraries.
 
-In the case of our component from earlier, we could use container queries instead of media queries to wrap the alternate styles, so instead of saying "when the viewport is 500px wide or more, apply these styles", we'd be saying "when the component is in 500px of space or more, apply these styles". Then, it wouldn't matter where in a project the component got dropped into - two columns, three columns, whatever -- it would just work. Perfect!
+In the case of our component from earlier, we could use container queries instead of media queries to wrap the alternate styles, so instead of saying "when the viewport is 500px wide or more, apply these styles", we'd be saying "when the component is in 500px of space or more, apply these styles". Something like this (beware, this syntax is speculative at best):
+
+~~~css
+.component {
+	// default presentation
+}
+
+@container (min-width:500px) {
+	.component {
+		// better presentation for wider viewports
+	}
+}
+
+@container (min-width:800px) {
+	.component {
+		// even better presentation for widest viewports
+	}
+}
+~~~
+
+Then, it wouldn't matter where in a project the component got dropped into - two columns, three columns, whatever -- it would just work. Perfect!
 
 Unfortunately, container queries are unlikely to happen any time soon, if at all. [Tab Atkins explains it](http://www.xanthir.com/b4VG0) better than I could, but essentially there are circularity issues with no apparent way around them.
 
@@ -50,7 +70,9 @@ Mixins are the solution.
 
 Obviously, I'm making a fairly large assumption at this point that any serious UI library is going to be using a CSS preprocessor (Sass or LESS, doesn't matter). Yes, preprocessors are a double-edged sword and people can make a mess by abusing extends and so on, but your UI library is important and its source should be carefully controlled, and contributions well-reviewed.
 
-With our example component, we can pull out the container-specific styles into a couple of mixins, so the library itself is only writing out the default presentation to its own CSS, but providing the tools to apply the responsive variants as required by consuming projects.
+With our example component, we can pull out the container-specific styles into a couple of mixins, so the library itself is only writing out the default presentation to its own CSS, but providing the tools to apply the responsive variants as required by consuming projects[^2].
+
+[^2]: This might raise a red flag with some people in the form of "If the component is being used in several different places, you'll be writing the same styles several times in the output CSS", which is a correct assessment of the facts, but isn't a problem for me. Firstly, as to the repetition itself, this is not something to be afraid of in the output CSS --- computers are really good at dealing with repetition! --- as long as the repetition stays *out of the source* (which is what mixins are for). Secondly, although the size of the output CSS file might grow as a result of the repetition, [Harry Roberts just proved](http://csswizardry.com/2016/02/mixins-better-for-performance/) that our trusty friend gzip will pretty much negate that.
 
 In library:
 
