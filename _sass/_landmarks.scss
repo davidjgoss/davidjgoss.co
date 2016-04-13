@@ -16,6 +16,12 @@
 	padding: 0.5em;
     padding-top: 2.5rem;
 	border: 1px solid $link-color;
+
+	.home-page & {
+		@media (min-height:650px) {
+			padding-top: 10rem;
+		}
+	}
 }
 
 .site-nav {
@@ -57,13 +63,21 @@
 	}
 }
 
-.main {
-	margin-bottom: 2.5em;
-}
-
 .site-info {
 	color: $quote-color;
 	text-align: center;
 	font-size: 0.75em;
 	line-height: 1.25em;
+	margin-top: 2.5rem;
+
+	.home-page & {
+		text-align: left;
+	}
+}
+
+.site-intro {
+	clear: left;
+	font-size: 2rem;
+	line-height: 1.25em;
+	padding-top: 1.5rem;
 }
