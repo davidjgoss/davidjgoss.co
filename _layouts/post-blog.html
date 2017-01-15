@@ -8,7 +8,7 @@ layout: default
 
     <footer>
         <p class="byline">
-            <a class="u-url byline__permalink" href="<?php the_permalink(); ?>" itemprop="url">∞</a>
+            <a class="u-url byline__permalink" href="{{ page.url }}" itemprop="url">∞</a>
             <time class="dt-published byline__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_long_string }}</time>
             <span class="byline__split">by</span>
             <span class="p-author h-card byline__source" itemprop="author" itemscope itemtype="http://schema.org/Person">
