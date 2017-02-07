@@ -12,12 +12,22 @@ pre, code, kbd {
 	hyphens: none;
 }
 
+code {
+	background-color: #ddd;
+	padding: 0 0.25em;
+}
+
 pre {
 	background-color: #272822;
 	color: #f8f8f2;
 	padding: 1.5em;
 	white-space: pre;
 	overflow: auto;
+
+	code {
+		background-color: transparent;
+		color: inherit;
+	}
 }
 
 .token.comment,
