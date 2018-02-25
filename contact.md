@@ -4,8 +4,7 @@ title: Contact
 permalink: /contact/
 ---
 
-Question or comment about the site?<br/>
-Interested in working together?<br/>
+Want to ask me or tell me something?<br/>
 **Get in touch.**
 
 <a class="button button--go" href="mailto:david@davidgoss.co">Email <strong>david@davidgoss.co</strong></a>
