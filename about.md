@@ -4,11 +4,11 @@ title: About
 permalink: /about/
 ---
 
-I'm David Goss, a 31-year-old British software developer living in Milton Keynes. Currently I work for a software company specialising in auto and asset finance. [Read my full CV](/cv/).
+I'm David Goss, a 31-year-old British software developer living in Milton Keynes. Currently I lead a development team at a company specialising in auto and asset finance. [Read my full CV](/cv/).
 
-Although like most people who work on the web I'm something of a generalist, at heart I'm a front-end developer --- HTML, CSS and (most of all) JavaScript are what I do. I also take a more-than-casual interest in responsive design, JavaScript tooling and code quality.
+I was originally a front-end developer, and while I still enjoy that the most I'm basically full stack now - I work at a Java shop, but I'm not all that fussy about server-side stacks. I'm especially interested in code quality, build tools and CI/CD, and performance.
 
-I use this personal site to blog (not often enough) about software development and to link to interesting posts from other, smarter people. Other than here, you can find me in all the obvious places --- having opinions on [Twitter](http://twitter.com/davidjgoss), sharing code on [GitHub](http://github.com/davidjgoss), and answering questions on [StackOverflow](http://stackoverflow.com/users/2235953/david-goss).
+I use this personal site to write irregularly about software development. Other than here, you can find me in all the obvious places --- having opinions on [Twitter](http://twitter.com/davidjgoss), sharing code on [GitHub](http://github.com/davidjgoss), and answering questions on [StackOverflow](http://stackoverflow.com/users/2235953/david-goss).
 
 - - -
 
