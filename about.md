@@ -14,10 +14,6 @@ I use this personal site to blog (not often enough) about software development a
 
 ## Colophon ##
 
-I design and code this site myself. I tend to start with pen and paper and then move straight to designing in the browser. The text is set in [Overpass](http://overpassfont.org/), which is free and open source.
+I designed this site myself. Its text is set in [Overpass](http://overpassfont.org/), which is free and open source. I used [Sass](http://sass-lang.com/) (the SCSS flavour) to write the styles from scratch, except for my [modern reset](https://github.com/davidjgoss/modern-reset). The syntax highlighting in code examples is done with Lea Verou's [Prism](http://prismjs.com/).
 
-These days, I'm using a 13" MacBook Air. I use [WebStorm](https://www.jetbrains.com/webstorm/) as my editor/IDE when working on this and most other projects, although I tend to use [VSCode](https://code.visualstudio.com/) for writing posts (in [Markdown](https://daringfireball.net/projects/markdown/), of course). [Chrome](https://www.google.com/chrome/) is my development browser.
-
-I use [Sass](http://sass-lang.com/) (the SCSS flavour) to write my CSS from scratch, except for my [modern reset](https://github.com/davidjgoss/modern-reset). The syntax highlighting in code examples is done with Lea Verou's [Prism](http://prismjs.com/).
-
-The site is built using [Jekyll](http://jekyllrb.com) and served via [GitHub Pages](https://pages.github.com). The source is [available on GitHub](https://github.com/davidjgoss/davidjgoss.github.io) and licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The content is written in in [Markdown](https://daringfireball.net/projects/markdown/). The site itself is built using [Jekyll](http://jekyllrb.com) and served via [GitHub Pages](https://pages.github.com). The source is [available on GitHub](https://github.com/davidjgoss/davidjgoss.github.io) and licensed under the [MIT license](https://opensource.org/licenses/MIT).
