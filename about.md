@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm David Goss, a 30-year-old British software developer living in Milton Keynes. Currently I work for a software company specialising in auto and asset finance. [Read my full CV](/cv/).
+I'm David Goss, a 31-year-old British software developer living in Milton Keynes. Currently I work for a software company specialising in auto and asset finance. [Read my full CV](/cv/).
 
 Although like most people who work on the web I'm something of a generalist, at heart I'm a front-end developer --- HTML, CSS and (most of all) JavaScript are what I do. I also take a more-than-casual interest in responsive design, JavaScript tooling and code quality.
 
