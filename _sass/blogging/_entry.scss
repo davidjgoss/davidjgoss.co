@@ -35,16 +35,3 @@
         font-size: 1.25em;
     }
 }
-
-.entry--links {
-	padding-left: 1em;
-	border-left: 0.1em solid $link-color;
-
-    .entry__title a {
-        color: $quote-color;
-    }
-
-    .entry__go {
-        margin-top: 1.5em;
-    }
-}
