@@ -6,6 +6,8 @@ tags:
 - mkjs
 summary:
   Last night I gave a brief talk at MK.js about writing elegant async code with ES2015 Promises. I'm pretty happy with how I did --- it was my first try at public speaking --- and the audience seemed to like the content.
+latest:
+  a talk I gave at MK.js on async code
 ---
 
 Last night I gave a brief talk at [MK.js](http://www.meetup.com/mkjscript/) about writing elegant async code with ES2015 Promises.
