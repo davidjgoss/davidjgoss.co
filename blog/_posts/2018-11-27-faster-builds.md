@@ -13,7 +13,16 @@ latest:
 
 A while ago, me and a couple of colleagues set about trying to make the CI build faster for our main Maven project. Since then, we have found a lot of interesting things you can do that won't make any difference to the build time, and a handful that will. Along the way, it's turned into an unhealthy obsession for all of us. But why did we get so worked up about how much time the build takes anyway?
 
-When someone has pushed the last commit to their pull request, they want to see that successful build so they can merge it and move on. With any more than a few minutes' wait in prospect, they'll look for other things to do and then have to context-switch when the build finally finishes.
+When someone has pushed the last commit to their pull request, they want to see that successful build so they can merge it and move on. The longer the build takes, the more productivity they'll lose, context-switching as they try to stay busy - we want a fast feedback loop. Also, a slower build means more time before you can ship to production - including when you need to deploy a fix for a critical issue. If you're serious about anything like continuous deployment, your build _needs_ to be fast.
+
+In a less direct way, continually pushing to keep your builds fast is good for the health of your codebase. You'll find and address numerous bugs, inefficiencies and defunct code, and most improvements you make will help developers working locally as well as the CI pipeline.
+
+## Measure
+
+There are a lot of different things we can look at doing, and it's tempting to just dive right in, but first we need to stop and decide how we're going to measure results. Remember a minute ago when I said we found a lot of ways to break the build and make it slower? I wasn't joking; I'd say at least every other thing we tried either didn't help or made it worse. If you rush around doing everything all in one go, you won't know what worked and what didn't.
+
+Having created a feature branch in your project, ideally you'd want to pick a CI server and isolate it, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
+
 
 Let's take a look at the Maven command that's likely running for your builds[^1]:
 
