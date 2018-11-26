@@ -50,3 +50,9 @@ The last and most interesting is the `-T` argument, which is an alias for `--thr
 With `-T1C`, we're telling Maven to use one thread per available CPU core. This seems to be the best balance; every time I've tried to use more than this, it's performed the same or worse, presumably as too many different threads compete for finite resources.
 
 The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's alnost certainly the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
+
+## Some perspective
+
+Trying to make the build faster can be a very frustrating endeavour. More than once I have spent the morning making a change I was absolutely certain would gain significant time, only for it to make it slightly worse.
+
+But everything's relative; if you're ever feeling a little sad about not having sub-5 minute builds, spare a thought for the people working at Oracle, where [according to this Hacker News thread](https://news.ycombinator.com/item?id=18442941) the feedback loop is 20-30 hours.
