@@ -23,6 +23,7 @@ There are a lot of different things we can look at doing, and it's tempting to j
 
 Having created a feature branch in your project, ideally you'd want to pick a CI server and isolate it, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
 
+## Quick wins on the command line
 
 Let's take a look at the Maven command that's likely running for your builds[^1]:
 
@@ -30,20 +31,22 @@ Let's take a look at the Maven command that's likely running for your builds[^1]
 mvn clean verify
 ```
 
-[^1]: The gaol would be `verify` for a feature branch build, but would be `deploy` when building a snapshot or release from master - the rest applies either way. Also, what a CI tool like Jenkins or TeamCity _actually_ runs will look very different to this, particularly where the `mvn` part is concerned, but nevertheless it should let you configure goals and options, even if it does add some bits and pieces of its own.
+[^1]: The goal would be `verify` for a feature branch build, but would be `deploy` when building a snapshot or release from master - the rest applies either way. Also, what a CI tool like Jenkins or TeamCity _actually_ runs will look very different to this, with the locations of Java, Maven etc heavily parameterised and a bunch of other parameters thrown in, but nevertheless it should let you configure goals and options, even if it does add some bits and pieces of its own.
 
-This seems fine - it is basically what you would run locally. But we can do better.
+This seems fine - it's basically what you would run locally. But we can get things moving faster from here without touching any of our code yet:
 
 ```
-mvn verify -T 1C
+mvn verify -Dmaven.artifact.threads=10 -T1C
 ```
 
-Maven's `clean` is not particularly efficient, your CI tool should already be cleaning the working directory for you either right before the build or earlier during idle time, and will probably do it quicker and better than Maven.
+(There are a few changes here; whilst I'm pretty confident in all of them it's probably still best to apply and measure them one at a time to make sure.)
 
-The `-T` argument is an alias for `--threads`, Maven's much underpublicised option for building reactor modules in parallel. As you'd hope, it's smart enough to work out the inter-dependencies of your modules and parallelise as much as possible without starting a module before other ones it depends on have finished. It will use up to the specified number of threads; the default is 1, meaning builds are entirely serial unless you specify otherwise.
+First, we dropped the `clean` goal. The clean plugin is not very efficient, but more to the point your CI tool should already be giving you a completely clean directory to work in, ideally cleaning it during idle time but at least right before your build starts. It will probably do it faster than the clean plugin as well.
 
-With `-T 1C`, we're telling Maven to use one thread per available CPU core. This seems to be the best balance; every time I've tried to use more than this, it's performed the same or worse, presumably as too many different threads compete for finite resources.
+Next, we set the `maven.artifact.threads` property to 10. This controls the number of dependencies Maven will allow itself to download in parallel, and while the default of 5 is not bad, a reasonable-sized project could probably benefit from more.
 
-The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's probably the single biggest gain you can make - it instantly reduced our build time by 75% when we first added it.
+The last and most interesting is the `-T` argument, which is an alias for `--threads`, Maven's under-publicised option for building reactor modules in parallel. As you'd hope, it's smart enough to work out the inter-dependencies of your modules and parallelise as much as possible without ever starting a module before other ones it depends on have finished. It will use up to the specified number of threads; the default is 1, meaning modules are built entirely in serial unless you specify otherwise.
 
-Trying to make the build faster can be a very frustrating endeavour. More than once I have spent the morning making a change I was absolutely certain would gain significant time, only for it to make it slightly worse. If you're ever feeling a little sad about not having sub-5 minute builds, spare a thought for the people working at Oracle, where [according to one HN thread](https://news.ycombinator.com/item?id=18442941) the feedback loop is 20-30 hours.
+With `-T1C`, we're telling Maven to use one thread per available CPU core. This seems to be the best balance; every time I've tried to use more than this, it's performed the same or worse, presumably as too many different threads compete for finite resources.
+
+The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's alnost certainly the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
