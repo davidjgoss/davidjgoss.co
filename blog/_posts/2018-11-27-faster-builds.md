@@ -64,6 +64,8 @@ If you have a lot of Maven modules in your project (like, 30+), it's worth givin
 
 Another thing worth auditing is the dependencies in your `pom.xml` files. Dependencies are very easy to add and use, but tend to get left in even when the code has changed and no longer relies on that dependency. This can cause unused dependencies to mount up and waste time in our build. You can use [`maven-dependency-plugin:analyze`](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html) to identify unused dependencies and remove them.
 
+For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html), you have the reactor summaryt at the end which should tell you how long each module has taken. This can give you some immediate pointers about where to look first for improvements - but keep in mind that when using [the `deployAtEnd` option](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html#deployAtEnd), the last module to finish will get the time taken to deploy _everything_ added to its reactor time, which can skew the results. Also, you can use [this neat tool](https://github.com/jcgay/maven-profiler) to analyse the time taken down to individual goal execution level, which can give you more clarity on _why_ a module is taking so long.
+
 ## Unit tests
 
 Unit tests written with JUnit and Mockito will run very fast in Maven, but we should still configure the [Surefire plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) right to extract the best performance:
