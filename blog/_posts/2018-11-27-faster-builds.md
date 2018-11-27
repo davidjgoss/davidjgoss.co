@@ -23,6 +23,8 @@ There are a lot of different things we can look at doing, and it's tempting to j
 
 Having created a feature branch in your project, ideally you'd want to pick a CI server and isolate it, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
 
+For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html), you have the reactor summary at the end which should tell you how long each module has taken. This can give you some immediate pointers about where to look first for improvements - but keep in mind that when using [the `deployAtEnd` option](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html#deployAtEnd), the last module to finish will get the time taken to deploy _everything_ added to its reactor time, which can skew the results. Also, you can use [this neat tool](https://github.com/jcgay/maven-profiler) to analyse the time taken down to individual goal execution level, which can give you more clarity on _why_ a module is taking so long.
+
 ## Avoid the problem
 
 At this point, there are a couple of elephants in the room: things that aren't optimisation at all, but could make the build faster:
@@ -63,8 +65,6 @@ The vast majority of Maven plugins support running in this multi-threaded mode, 
 If you have a lot of Maven modules in your project (like, 30+), it's worth giving them an audit to see if the structure has some inefficiency. Each module in Maven has an inherent cost: resolving dependencies, building artifacts etc. If you have any modules that are doing comparatively little (i.e. they just contain a handful of classes) then you might have a chance to fold that module into another one and save some time. Bear in mind that, taken too far, this risks negating the benefits of multi-threaded mode.
 
 Another thing worth auditing is the dependencies in your `pom.xml` files. Dependencies are very easy to add and use, but tend to get left in even when the code has changed and no longer relies on that dependency. This can cause unused dependencies to mount up and waste time in our build. You can use [`maven-dependency-plugin:analyze`](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html) to identify unused dependencies and remove them.
-
-For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html), you have the reactor summaryt at the end which should tell you how long each module has taken. This can give you some immediate pointers about where to look first for improvements - but keep in mind that when using [the `deployAtEnd` option](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html#deployAtEnd), the last module to finish will get the time taken to deploy _everything_ added to its reactor time, which can skew the results. Also, you can use [this neat tool](https://github.com/jcgay/maven-profiler) to analyse the time taken down to individual goal execution level, which can give you more clarity on _why_ a module is taking so long.
 
 ## Unit tests
 
