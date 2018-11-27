@@ -6,7 +6,7 @@ tags:
 - performance
 - ci
 summary:
-  TBA
+  A while ago, me and a couple of colleagues set about trying to make the CI build faster for our main Maven project. Along the way, it's turned into an unhealthy obsession for all of us. But why did we get so worked up about how much time the build takes anyway?
 latest:
   faster Maven builds
 ---
