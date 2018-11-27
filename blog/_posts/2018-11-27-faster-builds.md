@@ -23,6 +23,13 @@ There are a lot of different things we can look at doing, and it's tempting to j
 
 Having created a feature branch in your project, ideally you'd want to pick a CI server and isolate it, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
 
+## Avoid the problem
+
+At this point, there are a couple of elephants in the room: things that aren't optimisation at all, but could make the build faster:
+
+- **Less stuff** - What can you spin out to be a separate library, or microservice? Areas of the code that are discreet, well-tested and rarely change are the best candidates.
+- **Faster machinery** - There's nothing like throwing money at a problem. But in all seriousness, hardware is cheap compared to developer time and attention. If you can upgrade your CI servers, you should.
+
 ## Quick wins on the command line
 
 Let's take a look at the Maven command that's likely running for your builds[^1]:
