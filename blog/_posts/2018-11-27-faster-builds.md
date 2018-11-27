@@ -11,7 +11,7 @@ latest:
   faster Maven builds
 ---
 
-A while ago, me and a couple of colleagues set about trying to make the CI build faster for our main Maven project. Since then, we have found a lot of interesting things you can do that won't make any difference to the build time, and a handful that will. Along the way, it's turned into an unhealthy obsession for all of us. But why did we get so worked up about how much time the build takes anyway?
+A while ago, me and a couple of colleagues set about trying to make the CI build faster for our main Maven project. Since then, we have found a lot of interesting things you can do that won't make any difference to the build time, some others that will make the build fail, and a handful that will actually speed it up. Along the way, it's turned into an unhealthy obsession for all of us. But why did we get so worked up about how much time the build takes anyway?
 
 When someone has pushed the last commit to their pull request, they want to see that successful build so they can merge it and move on. The longer the build takes, the more productivity they'll lose, context-switching as they try to stay busy - we want a fast feedback loop. Also, a slower build means more time before you can ship to production - including when you need to deploy a fix for a critical issue. If you're serious about anything like continuous deployment, your build _needs_ to be fast.
 
@@ -49,10 +49,65 @@ The last and most interesting is the `-T` argument, which is an alias for `--thr
 
 With `-T1C`, we're telling Maven to use one thread per available CPU core. This seems to be the best balance; every time I've tried to use more than this, it's performed the same or worse, presumably as too many different threads compete for finite resources.
 
-The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's alnost certainly the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
+The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's almost certainly the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
+
+## Maven modules and dependencies
+
+If you have a lot of Maven modules in your project (like, 30+), it's worth giving them an audit to see if the structure has some inefficiency. Each module in Maven has an inherent cost: resolving dependencies, building artifacts etc. If you have any modules that are doing comparatively little (i.e. they just contain a handful of classes) then you might have a chance to fold that module into another one and save some time. Bear in mind that, taken too far, this risks negating the benefits of multi-threaded mode.
+
+Another thing worth auditing is the dependencies in your `pom.xml` files. Dependencies are very easy to add and use, but tend to get left in even when the code has changed and no longer relies on that dependency. This can cause unused dependencies to mount up and waste time in our build. You can use [`maven-dependency-plugin:analyze`](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html) to identify unused dependencies and remove them.
+
+## Unit tests
+
+Unit tests written with JUnit and Mockito will run very fast in Maven, but we should still configure the [Surefire plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) right to extract the best performance:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    ...
+    <configuration>
+        <parallel>all</parallel>
+        <threadCount>2</threadCount>
+        <perCoreThreadCount>true</perCoreThreadCount>
+    </configuration>
+</plugin>
+```
+
+This tells Maven to spin up multiple threads to run tests within the same module. If you have many hundreds or even over a thousand tests in one module, you'll probably see a saving.
+
+## Integration tests
+
+This is where things get tougher. "Integration tests" has a bit of a broad definition these days, but for the sake of argument let's say we mean stuff that runs at the `integration-test` phase in the Maven lifecycle, using [Spring test](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#integration-testing) to bring up an application context against a database and test the app via its entry points.
+
+Naturally, being [higher in the pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), these tests are going to take a _lot_ longer to run than unit tests. As ever, parallelisation is the key to gaining time, but with the nature of this kind of testing we are more likely to run into problems; for example, any thread safety issues in your application will be brutally exposed.
+
+By the way, our Surefire configuration looks a bit different in our integration test module:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    ...
+    <configuration>
+        <parallel>classes</parallel>
+        <threadCount>2</threadCount>
+        <perCoreThreadCount>true</perCoreThreadCount>
+        <trimStackTrace>false</trimStackTrace>
+    </configuration>
+</plugin>
+```
+
+Notice that in our `parallel` property, we have "classes" instead of "all" - this means Maven will use multiple threads to run tests, but will only parallelise down to class level, so every test method in a given class will run one at a time on the same thread. This is certainly not ideal, but parallelisation down to method level [simply didn't work](https://stackoverflow.com/questions/26882936/why-does-springjunit4classrunner-not-work-with-surefire-parallel-methods) with Spring test, as we found to our cost[^2].
+
+[^2]: In theory it's now [possible using the latest versions](https://jira.spring.io/browse/SPR-5863) of Spring and JUnit, though we haven't been able to test it yet.
+
+You can do things to work around this limitation; if you have an expensive setup operation ("calculate a quote", "create a document" etc), the result of which is asserted on by multiple methods that don't change any state themselves, you may be able to refactor to do that expensive operation fewer times whist maintaining the same coverage.
+
+Ultimately, of course, the tests are only ever going to be as fast as your app lets them be. Running [JProfiler](https://www.ej-technologies.com/products/jprofiler/overview.html) or something similar against your tests to find hotspots will help your users just as much as your build times, and is something you should go back to on a regular basis, even if you're "happy" with how fast your build is.
 
 ## Some perspective
 
-Trying to make the build faster can be a very frustrating endeavour. More than once I have spent the morning making a change I was absolutely certain would gain significant time, only for it to make it slightly worse.
+Trying to make the build faster can be a very frustrating endeavour. More than once I have spent the morning making a change I was 100% certain would gain significant time, only for it to make no difference.
 
-But everything's relative; if you're ever feeling a little sad about not having sub-5 minute builds, spare a thought for the people working at Oracle, where [according to this Hacker News thread](https://news.ycombinator.com/item?id=18442941) the feedback loop is 20-30 hours.
+But everything's relative; if you're ever feeling a little sad about not having sub-3 minute builds, spare a thought for the people working at Oracle, where [according to this Hacker News thread](https://news.ycombinator.com/item?id=18442941) the feedback loop is some 30 hours.
