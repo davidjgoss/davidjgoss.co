@@ -68,7 +68,7 @@ Unit tests written with JUnit and Mockito will run very fast in Maven, but we sh
     ...
     <configuration>
         <parallel>all</parallel>
-        <threadCount>2</threadCount>
+        <threadCount>4</threadCount>
         <perCoreThreadCount>true</perCoreThreadCount>
     </configuration>
 </plugin>
@@ -91,7 +91,7 @@ By the way, our Surefire configuration looks a bit different in our integration 
     ...
     <configuration>
         <parallel>classes</parallel>
-        <threadCount>2</threadCount>
+        <threadCount>4</threadCount>
         <perCoreThreadCount>true</perCoreThreadCount>
         <trimStackTrace>false</trimStackTrace>
     </configuration>
