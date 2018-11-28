@@ -21,7 +21,7 @@ In a less direct way, continually pushing to keep your builds fast is good for t
 
 There are a lot of different things we can look at doing, and it's tempting to just dive right in, but first we need to stop and decide how we're going to measure results. Remember a minute ago when I said we found a lot of ways to break the build and make it slower? I wasn't joking; I'd say at least every other thing we tried either didn't help or made it worse. If you rush around doing everything all in one go, you won't know what worked and what didn't.
 
-Having created a feature branch in your project, ideally you'd want to pick a CI server and isolate it, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
+Having created a feature branch in your project, ideally you'd want a CI server all to yourself, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
 
 For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html), you have the reactor summary at the end which should tell you how long each module has taken. This can give you some immediate pointers about where to look first for improvements - but keep in mind that when using [the `deployAtEnd` option](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html#deployAtEnd), the last module to finish will get the time taken to deploy _everything_ added to its reactor time, which can skew the results. Also, you can use [this neat tool](https://github.com/jcgay/maven-profiler) to analyse the time taken down to individual goal execution level, which can give you more clarity on _why_ a module is taking so long.
 
@@ -29,8 +29,8 @@ For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-mo
 
 At this point, there are a couple of elephants in the room: things that aren't optimisation at all, but could make the build faster:
 
-- **Less stuff** - What can you spin out to be a separate library, or microservice? Areas of the code that are discreet, well-tested and rarely change are the best candidates.
-- **Faster machinery** - There's nothing like throwing money at a problem. But in all seriousness, hardware is cheap compared to developer time and attention. If you can upgrade your CI servers, you should.
+- **Less stuff** - What can you spin out to be a separate library, or service? Areas of the code that are discreet, well-tested and rarely change are the best candidates.
+- **Faster machinery** - There's nothing like throwing money at a problem. But in all seriousness, hardware and cloud compute power are cheap compared to developer time and attention. If you can afford more CI power, you should unquestionably get it.
 
 ## Quick wins on the command line
 
@@ -62,7 +62,7 @@ The vast majority of Maven plugins support running in this multi-threaded mode, 
 
 ## Maven modules and dependencies
 
-If you have a lot of Maven modules in your project (like, 30+), it's worth giving them an audit to see if the structure has some inefficiency. Each module in Maven has an inherent cost: resolving dependencies, building artifacts etc. If you have any modules that are doing comparatively little (i.e. they just contain a handful of classes) then you might have a chance to fold that module into another one and save some time. Bear in mind that, taken too far, this risks negating the benefits of multi-threaded mode.
+If you have a lot of Maven modules in your project (like, 30+), it's worth giving them an audit to see if the structure has some inefficiency. Each module in Maven has an inherent cost: initialising tooling, resolving dependencies, building artifacts etc. If you have any modules that are doing comparatively little (i.e. they just contain a handful of classes) then you might have a chance to fold that module into another one and save some time. Bear in mind that, taken too far, this risks negating the benefits of multi-threaded mode.
 
 Another thing worth auditing is the dependencies in your `pom.xml` files. Dependencies are very easy to add and use, but tend to get left in even when the code has changed and no longer relies on that dependency. This can cause unused dependencies to mount up and waste time in our build. You can use [`maven-dependency-plugin:analyze`](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html) to identify unused dependencies and remove them.
 
@@ -83,7 +83,7 @@ Unit tests written with JUnit and Mockito will run very fast in Maven, but we sh
 </plugin>
 ```
 
-This tells Maven to spin up multiple threads to run tests within the same module. If you have many hundreds or even over a thousand tests in one module, you'll probably see a saving.
+This tells Maven to spin up multiple threads to run tests within the same module. If you have a thousand or more tests in one module, you shoudl see a saving.
 
 ## Integration tests
 
