@@ -4,9 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm David Goss, a 31-year-old British software engineer living in Milton Keynes. Currently I lead a development team at a company specialising in auto and asset finance. [Read my full CV](/cv/).
-
-I was originally a front-end developer, and while I still enjoy that the most I'm basically full stack now - I work at a Java shop, but I'm not all that fussy about server-side stacks. I'm especially interested in code quality, build tools and CI/CD, and performance.
+I'm David Goss, a British software engineer. I lead a development team at a company specialising in auto and asset finance. Day-to-day I mostly work with Java, Spring, Hibernate, Maven, npm and Angular.
 
 I use this personal site to write irregularly about software development. Other than here, you can find me in all the obvious places --- having opinions on [Twitter](http://twitter.com/davidjgoss), sharing code on [GitHub](http://github.com/davidjgoss), and answering questions on [StackOverflow](http://stackoverflow.com/users/2235953/david-goss).
 
