@@ -14,6 +14,6 @@ I use this personal site to write irregularly about software development. Other 
 
 ## Colophon ##
 
-I designed this site myself. Its text is set in [Overpass](http://overpassfont.org/), which is free and open source --- I'm serving it from [Google Fonts](https://fonts.google.com/specimen/Overpass?selection.family=Overpass+Mono%7COverpass:400,400i,700,700i). I used [Sass](http://sass-lang.com/) (the SCSS flavour) to write the styles from scratch, except for my [modern reset](https://github.com/davidjgoss/modern-reset). The syntax highlighting in code examples is done with Lea Verou's [Prism](http://prismjs.com/).
+This site's text is set in [Overpass](http://overpassfont.org/), which is free and open source --- I'm serving it from [Google Fonts](https://fonts.google.com/specimen/Overpass?selection.family=Overpass+Mono%7COverpass:400,400i,700,700i). Styles are written in [SCSS](http://sass-lang.com/). The syntax highlighting in code examples is done with Lea Verou's [Prism](http://prismjs.com/).
 
-The content is written in in [Markdown](https://daringfireball.net/projects/markdown/). The site itself is built using [Jekyll](http://jekyllrb.com) and served via [GitHub Pages](https://pages.github.com). The source is [available on GitHub](https://github.com/davidjgoss/davidjgoss.github.io) and licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The content is written in [Markdown](https://daringfireball.net/projects/markdown/). The site itself is built using [Jekyll](http://jekyllrb.com) and served via [GitHub Pages](https://pages.github.com). The source is [available on GitHub](https://github.com/davidjgoss/davidjgoss.github.io) under the [MIT license](https://opensource.org/licenses/MIT).
