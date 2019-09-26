@@ -15,23 +15,25 @@ A while ago, me and a couple of colleagues set about trying to make the CI build
 
 When someone has pushed the last commit to their pull request, they want to see that successful build so they can merge it and move on. The longer the build takes, the more productivity they'll lose, context-switching as they try to stay busy - we want a fast feedback loop. Also, a slower build means more time before you can ship to production - including when you need to deploy a fix for a critical issue. If you're serious about anything like continuous deployment, your build _needs_ to be fast.
 
-In a less direct way, continually pushing to keep your builds fast is good for the health of your codebase. You'll find and address numerous bugs, inefficiencies and defunct code, and most improvements you make will help developers working locally as well as the CI pipeline.
+In a less direct way, continually pushing to keep your builds fast is good for the health of your codebase. You'll find and address bugs, inefficiencies and defunct code, and most improvements you make will help developers on the ground as well as the CI pipeline.
 
 ## Measure
 
-There are a lot of different things we can look at doing, and it's tempting to just dive right in, but first we need to stop and decide how we're going to measure results. There will be things that you think will save time that actually end up making no difference or even making it worse; if you rush around doing everything all in one go, you won't be able to tell the good from the bad.
+There are a lot of different things we can look at doing, and it's tempting to just jump in, but first we need to stop and decide how we're going to measure results. There will be things that you think will save time that actually end up making no difference or even making it worse; if you rush around doing everything all in one go, you won't be able to tell the good from the bad.
 
-Having created a feature branch in your project, ideally you'd want a CI server all to yourself, so the only thing it's going to do today is run your feature branch. After each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, especially if the CI servers are virtualised, but it should be good enough to sort the winners from the losers.
+Having created a feature branch in your project, wirh each change you can then run the build a few times and take the average as your measurement. It's still not exactly scientific, but it should be good enough to sort the wheat from the chaff.
 
 For [multi-module builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html), you have the reactor summary at the end which should tell you how long each module has taken. This can give you some immediate pointers about where to look first for improvements - but keep in mind that when using [the `deployAtEnd` option](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html#deployAtEnd), the last module to finish will get the time taken to deploy _everything_ added to its reactor time, which can skew the results. Also, you can use [this neat tool](https://github.com/jcgay/maven-profiler) to analyse the time taken down to individual goal execution level, which can give you more clarity on _why_ a module is taking so long.
 
 ## Work around it
 
-At this point, there are a few elephants in the room: things that aren't directly optimisation, but could make the build faster:
+Don't forget about the more indirect things you can do to make your build faster:
 
 - **Less stuff** - What can you spin out to be a separate library, or service? Areas of the code that are discreet, well-tested and rarely change are the best candidates.
-- **Faster machinery** - There's nothing like throwing money at a problem. Hardware and cloud compute power are cheap and plentiful compared to developer time and attention.
+- **Faster machinery** - Hardware and cloud compute power are cheap and plentiful compared to developer time and attention[^tcproject].
 - **Use Gradle?** - It's [worth a shot](https://gradle.org/gradle-vs-maven-performance/)
+
+[^tcproject]: Seriously, do this. Our builds were pretty well optimised by the time we finished this little sprint, but we recently replaced the infrastructure with the best hardware we could afford, everything is now 3-4x faster and the difference to developer experience has been huge.
 
 ## Configure Maven for better performance
 
@@ -45,13 +47,13 @@ Maven's default JVM memory args have it maxing out at 512mb - a large-ish projec
 
 ## Command line arguments
 
-Let's take a look at the Maven command that's likely running for your builds[^1]:
+Let's take a look at the Maven command that's likely running for your builds[^command]:
 
 ```
 mvn clean verify
 ```
 
-[^1]: The goal would be `verify` for a feature branch build, but would be `deploy` when building a snapshot or release from master - the rest applies either way. Also, what a CI tool like Jenkins or TeamCity _actually_ runs will look very different to this, with the locations of Java, Maven etc heavily parameterised and a bunch of other parameters thrown in, but nevertheless it should let you configure goals and options, even if it does add some bits and pieces of its own.
+[^command]: The goal would be `verify` for a feature branch build, but would be `deploy` when building a snapshot or release from master - the rest applies either way. Also, what a CI tool like Jenkins or TeamCity _actually_ runs will look very different to this, with the locations of Java, Maven etc heavily parameterised and a bunch of other parameters thrown in, but regardless it should let you configure goals and options, even if it does add some bits and pieces of its own.
 
 This seems fine - it's basically what you would run locally. But we can get things moving faster from here without touching any of our code yet:
 
@@ -59,13 +61,13 @@ This seems fine - it's basically what you would run locally. But we can get thin
 mvn verify -T1C
 ```
 
-First, we dropped the `clean` goal. The clean plugin is not very efficient, but more to the point your CI tool should already be giving you a completely clean directory to work in, ideally cleaning it during idle time but at least right before your build starts. It will probably do it faster than the clean plugin as well.
+First, we dropped the `clean` goal. The clean plugin is not very efficient, but more to the point your CI tool should already be giving you a completely clean directory to work in (it will probably do it faster than the clean plugin as well).
 
 The most interesting (for projects with multiple modules at least) is the `-T` argument, which is an alias for `--threads`, Maven's under-publicised option for building reactor modules in parallel. As you'd hope, it's smart enough to work out the inter-dependencies of your modules and parallelise as much as possible without ever starting a module before other ones it depends on have finished. It will use up to the specified number of threads; the default is 1, meaning modules are built entirely in serial unless you specify otherwise.
 
 With `-T1C`, we're telling Maven to use one thread per available CPU core. This seems to be the best balance; every time we tried to use more than this, it performed the same or worse, presumably as too many different threads compete for finite resources.
 
-The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's almost certainly the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
+The vast majority of Maven plugins support running in this multi-threaded mode, including all the first-party ones. If you're not already doing it, it's probably the single biggest gain you can make; your mileage may vary, but an instant 80% improvement is not unrealistic for a project with a dozen or more modules.
 
 ## Maven modules and dependencies
 

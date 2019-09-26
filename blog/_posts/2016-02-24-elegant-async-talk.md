@@ -22,4 +22,4 @@ If you're near Milton Keynes on the last Tuesday of a month, [join us](http://ww
 
 <script async class="speakerdeck-embed" data-id="6e75587c10bf4b4dad46c74ef7236867" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-[^1]: God, it's hard not to call it ES6 all the time.
+[^1]: It's really hard not to call it ES6 all the time.
