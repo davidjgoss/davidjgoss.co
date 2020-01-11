@@ -5,8 +5,8 @@
 
 .site-logo {
 	float: left;
-	background: $link-color;
-	color: #fff;
+	background: $mid-theme-color;
+	color: lighten($light-theme-color, 50%);
 	text-transform: uppercase;
 	text-decoration: none;
 	font-family: $heading-font;
@@ -15,11 +15,11 @@
 	line-height: 1em;
 	padding: 0.5em;
     padding-top: 2.5rem;
-	border: 1px solid $link-color;
+	border: 1px solid $mid-theme-color;
 
 	.home-page & {
 		@media (min-height:650px) {
-			padding-top: 10rem;
+			padding-top: 5rem;
 		}
 	}
 }
@@ -37,9 +37,11 @@
 		display: inline-block;
 
 		&:after {
-			content: "|";
-			color: $link-color;
-			padding-left: 0.25em;
+			content: "\2022";
+			color: $light-theme-color;
+			padding-left: 0.5em;
+			padding-right: 0.25em;
+			opacity: 0.8;
 		}
 
 		&:last-child:after {

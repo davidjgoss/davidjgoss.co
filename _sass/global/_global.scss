@@ -4,7 +4,7 @@ html {
 	font-size: 16px;
 	font-family: $base-font;
 	padding: 0 1em;
-	border-top: 0.25em solid $link-color;
+	border-top: 0.25em solid $dark-theme-color;
 
 	@media print {
 		padding: 0;
@@ -18,7 +18,7 @@ body {
 }
 
 a {
-	color: $link-color;
+	color: $light-theme-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -66,7 +66,7 @@ blockquote {
 		position: absolute;
 		top: 0.3em;
 		left: 0.3em;
-		color: $link-color;
+		color: $light-theme-color;
 		font-size: 3em;
 		font-family: $heading-font;
 	}
