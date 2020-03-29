@@ -40,11 +40,11 @@ Once you get into actually adding your new functionality, keep to this mantra of
 
 If you _do_ end up with a big pull request --- e.g. dozens of files and hundreds of lines affected --- reviewers could have a hard time getting a sense of what your change is really about, where the important bits are, etc. Trawling through a huge diff looking for the big picture is no fun, and your reviewers didn't sign up for it.
 
-This is where your commits[^onlygit] can be really helpful and tell a lot of the story for you. However, this does depend on having a sequence of commits that form a coherent narrative, which is something you have be quite deliberate about.
+This is where your commits[^onlygit] can be really helpful and tell a lot of the story for you. However, this does depend on having a sequence of commits that form a coherent narrative. This sounds like a lot of effort, but you don't have to obsess about as you go along; it's a by-product of committing frequently.
 
 [^onlygit]: When I talk about commits, I am really only talking about Git; if you are using something else, I honestly don't know what to tell you.
 
-If you're not already, get into the habit of committing little and often --- not daily or hourly, but with _every change_ you make, in a tight loop of "compile, test, commit"[^compiletestcommit]. By the time you're ready to open your pull request, you'll have a list of commits that is probably too granular and a bit messy, but you can use the amazing [interactive rebase](https://tgvashworth.com/2014/02/24/rebase-you-interactively-for-great-good.html) to clean up and consolidate[^moarrebase] into something that's useful for a reviewer to follow.
+By frequently, I don't mean daily or hourly, I mean with _every change_ you make, in a tight loop of "compile, test, commit"[^compiletestcommit]. By the time you're ready to open your pull request, you'll have a list of commits that is probably too granular and a bit messy, but you can use [interactive rebase](https://tgvashworth.com/2014/02/24/rebase-you-interactively-for-great-good.html) to clean up and consolidate[^moarrebase] into something that's useful for a reviewer to follow.
 
 [^compiletestcommit]: There are [variations](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864), but you get the idea.
 
@@ -62,9 +62,7 @@ Don't leave the description blank. Use it to clearly outline:
 
 This should give reviewers some good context for what they're about to see, and save them having to go off and read issue descriptions or acceptance criteria. If the changes have a non-trivial UI impact, think about adding a couple of screenshots.
 
-If you can predict any queries that reviewers might have[^burnett], try to address them pre-emptively by adding comments yourself, inline with the code. You can call out mitigating factors and/or other approaches that were considered and discarded.
-
-[^burnett]: I assume other companies also have a "pretty sure you could just do this with a regex" guy who they can always see coming?
+If you can predict any queries that reviewers might have, try to address them pre-emptively by adding comments yourself, inline with the code. You can call out mitigating factors and/or other approaches that were considered and discarded.
 
 Finally, spend five minutes looking over the pull request yourself before you add any reviewers; you'll be amazed how often you find typos, commented-out code you forgot to delete, defunct tests etc. This will save your reviewers time and might save you some embarassment.
 
