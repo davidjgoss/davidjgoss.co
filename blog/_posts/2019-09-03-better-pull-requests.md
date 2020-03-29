@@ -22,7 +22,7 @@ latest:
 
 As the person creating a pull request, you're going to be asking reviewers for some of their time and attention; both are finite, so do what you can to make it easy for them. It'll help you get this change in faster and, if you keep it up, might earn you a reputation in your company as someone who does good work and is thoughtful.
 
-### Keep it small, if you can
+### Keep it small (if you can)
 
 Small, focused pull requests from [short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/) have the easiest time getting merged. They are:
 
@@ -36,7 +36,7 @@ For example, you might be doing some [preparatory refactoring](https://martinfow
 
 Once you get into actually adding your new functionality, keep to this mantra of small and incremental changes. Try working from the outside in --- starting with the UI or the API entry point, stubbing the next layer in as you go, and using feature flags to keep it hidden until it's ready. As well as preventing you from drifting off the mainline and/or doing too-big pull requests, this approach gives you a chance to tag expert reviewers when working in their area, without dragging in too many people at a time.
 
-### Tell the story with your commits
+### Tell the story with your commits (sometimes)
 
 If you _do_ end up with a big pull request --- e.g. dozens of files and hundreds of lines affected --- reviewers could have a hard time getting a sense of what your change is really about, where the important bits are, etc. Trawling through a huge diff looking for the big picture is no fun, and your reviewers didn't sign up for it.
 
@@ -88,7 +88,9 @@ There will be times when you aren't going to review a pull request you've been t
 
 Coming into a code review, resist the urge to go straight in and start commenting on stuff that jumps out at you. Instead, do a quick pass over the whole pull request --- the answers to your questions might be in there, if you take a minute to look.
 
-When you do come to leave some critical feedback, think carefully about what to say and how. As with most communication that isn't face-to-face, it's easy to come across like a jerk even if you don't mean to, so it's worth going out of your way to be cordial and constructive. When you've spotted a problem, consider putting to the requester as a question, like "Not sure, but this looks to me like it will break if the second argument is null, could you add a test to check?", or "This might read better using a stream, what do you think?".
+When you do come to leave some critical feedback, think carefully about what to say and how. As with most communication that isn't face-to-face, it's easy to come across like a jerk even if you don't mean to[^tone], so it's worth going out of your way to be cordial and constructive. When you've spotted a problem, consider putting to the requester as a question, like "Not sure, but this looks to me like it will break if the second argument is null, could you add a test to check?", or "This might read better using a stream, what do you think?".
+
+[^tone]: And remember, other people are watching - you are setting the tone.
 
 Many comments or suggestions you add will be subjective to some degree, so it's good to provide information that supports your point of view. For example, if you're pointing out that some internal standard or convention is being broken, link to where the standards are documented, and to a conforming example elsewhere in the codebase. If you are suggesting a different tool or technique for something, link to an article that explains it.
 
