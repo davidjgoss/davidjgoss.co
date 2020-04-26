@@ -1,3 +1,11 @@
+/* PrismJS 1.20.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+java+json+less+markdown+jsx+scss+typescript+yaml */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
 pre, code, kbd {
 	font-size: 1em;
 	font-family: $mono-font;
@@ -50,7 +58,7 @@ pre {
 }
 
 .token.function-name {
-	color: $bright-theme-color;
+	color: #6196cc;
 }
 
 .token.boolean,
@@ -79,13 +87,13 @@ pre {
 .token.attr-value,
 .token.regex,
 .token.variable {
-	color: lighten($light-theme-color, 25%);
+	color: #7ec699;
 }
 
 .token.operator,
 .token.entity,
 .token.url {
-	color: $bright-theme-color;
+	color: #67cdcc;
 }
 
 .token.important,
@@ -101,5 +109,5 @@ pre {
 }
 
 .token.inserted {
-	color:  $mid-theme-color;
+	color: green;
 }
