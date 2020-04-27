@@ -8,9 +8,9 @@ $fade-color: #888;
 $shade-color: #eaeaea;
 
 $bright-theme-color: rgb(0, 210, 225);
-$light-theme-color: rgb(0, 210, 225);
-$mid-theme-color: rgb(0, 210, 225);
-$dark-theme-color: rgb(0, 210, 225);
+$light-theme-color: $bright-theme-color;
+$mid-theme-color: $bright-theme-color;
+$dark-theme-color: $bright-theme-color;
 
 $cv-color: rgb(29, 77, 148);
 $cv-color-shade: rgba(29, 77, 148, 0.25);
