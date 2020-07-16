@@ -40,7 +40,7 @@ Don't forget about the more indirect things you can do to make your build faster
 Let's set these up in our [`MAVEN_OPTS`](https://maven.apache.org/configure.html#MAVEN_OPTS_environment_variable:):
 
 ```
--Xms1024m -Xms2048m -Dmaven.artifact.threads=10
+-Xms1024m -Xmx2048m -Dmaven.artifact.threads=10
 ```
 
 Maven's default JVM memory args have it maxing out at 512mb - a large-ish project will want more than this. Also, by default, Maven will only try to resolve 5 artifacts at the same time - doubling this should make the dependency resolution faster overall.
