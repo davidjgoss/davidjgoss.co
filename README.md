@@ -1,3 +1,3 @@
 # davidjgoss.github.io
 
-My personal site; access at <http://davidgoss.co/>
+My personal site; access at <https://davidgoss.co/>
