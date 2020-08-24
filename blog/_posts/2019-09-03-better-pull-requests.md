@@ -105,3 +105,7 @@ Aside from stylistic stuff, if you find yourself repeatedly picking up on the sa
 - - -
 
 That's it. Hopefully, you've gotten the sense that what's good practise for smooth pull requests is also good practise for software in general, and that time taken to get them right is time well spent.
+
+Further reading:
+
+- [_Code Reviews at Medium_](https://medium.engineering/code-reviews-at-medium-bed2c0dce13a) by Christine Donovan
