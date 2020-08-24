@@ -5,14 +5,12 @@ tags:
 - work
 
 summary:
-  I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process. So, here are those opinions.
+  I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process.
 latest:
   better pull requests
 ---
 
-*I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process. So, here are those opinions.*
-
-(This is very much coming from a perspective of closed-source projects inside a company, but I think some of it applies to open source too.)
+*I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process.*
 
 - - - 
     
@@ -68,7 +66,9 @@ Finally, spend five minutes looking over the pull request yourself before you ad
 
 ### Choice of reviewers
 
-Pull requests are a really good opportunity for people to learn, so it's a bit of a waste if each developer in a team just tags the lead for review. I usually tag everyone in the team who's at work that day, perhaps sparing anyone who is super-focused on something and/or on a deadline. I don't expect _everyone_ will review or provide feedback, but at least everyone gets a chance to see what's going on.
+Pull requests are a really good opportunity for people to learn[^notjustagate], so it's a bit of a waste if each developer in a team just tags the lead for review. I usually tag everyone in the team who's at work that day, perhaps sparing anyone who is super-focused on something and/or on a deadline. I don't expect _everyone_ will review or provide feedback, but at least everyone gets a chance to see what's going on.
+
+[^notjustagate]: Just one of several good side effects of having more sets of eyes on a piece of work, beyond just making sure it's "good enough". It's why when I see hot takes about code review just slowing people down, I can't help but think they're missing the point.
 
 Also, think about people outside the immediate team: is there someone who has worked in this area a lot and could give some valuable feedback, or someone who's expressed an interest in a tool or technique you've used and might like to see what you've done?
 
@@ -97,6 +97,8 @@ Many comments or suggestions you add will be subjective to some degree, so it's 
 Also, don't forget about positive feedback. Yes, the main purpose of the review is to address any shortcomings before merging, but it's also a chance for you to call out any good stuff you see. The odd "This is a nice pattern, would like to see more of it" won't do any harm, and might provide a bit of balance if you have left some more critical feedback elsewhere.
 
 ### Automate
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">@ programmers: do any of you actually enjoy manually reminding your coworkers about manual styling issues everyday?</p>&mdash; lynn (they) (@lynncyrin) <a href="https://twitter.com/lynncyrin/status/1293981514644910081?ref_src=twsrc%5Etfw">August 13, 2020</a></blockquote>
 
 If you find yourself leaving comments on pull requests about code style (indents, spacing, etc), something is wrong. Tools like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) were built to do exactly this sort of thing, so get going with one now if you haven't already. Being told your code doesn't look right hurts your feelings; better that it comes from a robot than a person.
 
