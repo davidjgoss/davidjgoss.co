@@ -1,9 +1,5 @@
 ---
 title: Designing responsive components in a UI library
-tags:
-- css
-- rwd
-- design
 summary:
   I've been working on a standard CSS framework and UI library at work for the past little while, and it's thrown up some tricky challenges. One of the more interesting ones has been that of how to design components to be responsive without knowing which context(s) they'll be used in.
 latest:

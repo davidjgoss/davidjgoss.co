@@ -1,9 +1,5 @@
 ---
 title: Better Pull Requests
-tags:
-- code-review
-- work
-
 summary:
   I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process.
 latest:
