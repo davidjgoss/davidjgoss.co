@@ -1,4 +1,6 @@
 ---
+permalink: "2018/11/27/faster-builds/"
+date: 2018-11-27
 title: Faster Maven Builds
 summary:
   A while ago, me and a couple of colleagues set about trying to make the CI build faster for a large Maven project. Along the way, it's turned into an unhealthy obsession for all of us. But why did we get so worked up about how much time the build takes anyway?
