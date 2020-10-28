@@ -1,0 +1,10 @@
+{
+  "name": "davidjgoss.github.io",
+  "version": "1.0.0",
+  "description": "My personal site; access at <https://davidgoss.co/>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidjgoss/davidjgoss.github.io.git"
+  },
+  "license": "MIT"
+}
