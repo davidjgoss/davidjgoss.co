@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
-{% include head %}
+{% include 'head.njk' %}
 <body>
 <main class="main" role="main">
-    {{ content }}
+    {{ content | safe }}
 </main>
 </body>
 </html>

@@ -4,11 +4,7 @@
     </h2>
     <p class="byline">
         <a class="u-url byline__permalink" href="{{ post.url }}" itemprop="url">∞</a>
-        <time class="dt-published byline__date" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date_to_long_string }}</time>
-        <span class="byine__split">by</span>
-		<span class="p-author h-card byline__source" itemprop="author" itemscope itemtype="http://schema.org/Person">
-			<span class="p-name" itemprop="name">{{ post.author }}</span>
-		</span>
+        <time class="dt-published byline__date" datetime="{{ post.date }}" itemprop="datePublished">{{ post.date }}</time>
     </p>
-    <div class="p-summary entry__excerpt" itemprop="description">{{ post.summary }}</div>
+    <div class="p-summary entry__excerpt" itemprop="description">{{ post.data.summary }}</div>
 </article>

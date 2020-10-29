@@ -1,9 +1,12 @@
+---
+layout: default
+---
 <header class="archive-header">
     <h1 class="page-heading">Articles</h1>
 </header>
 
 <div class="post-list">
-    {% for post in site.categories.blog %}
-    {% include listing-blog.html %}
+    {% for post in collections.posts %}
+    {% include 'post-listing.njk' %}
     {% endfor %}
 </div>
