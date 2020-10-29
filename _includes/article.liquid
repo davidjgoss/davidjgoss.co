@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{% include header %}
+<article class="h-entry entry entry--blog entry--full" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 class="p-name entry__title" itemprop="headline">{{ title }}</h1>
+    </header>
+
+    <footer>
+        <p class="byline">
+            <a class="u-url byline__permalink" href="{{ page.url }}" itemprop="url">∞</a>
+            <time class="dt-published byline__date" datetime="{{ page.date | machineDate }}" itemprop="datePublished">{{ page.date | humanDate }}</time>
+        </p>
+    </footer>
+
+    <div class="e-content entry__content long-form" itemprop="articleBody">{{ content | safe }}</div>
+</article>
+{% include footer %}
+<script>
+(function() {
+    if (document.querySelector("blockquote.twitter-tweet")) {
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "//platform.twitter.com/widgets.js";
+        document.body.appendChild(script);
+    }
+}());
+</script>

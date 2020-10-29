@@ -1,0 +1,96 @@
+.site-header {
+    margin-bottom: 2.5em;
+}
+
+.site-logo {
+    float: left;
+    background: var(--theme-color);
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 0.5em;
+    padding-top: 2.5rem;
+    border: 1px solid var(--theme-color);
+}
+
+@media (min-height: 650px) {
+    .home-page .site-logo {
+        padding-top: 5rem;
+    }
+}
+
+.site-nav {
+    clear: both;
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 0.5rem;
+}
+
+@media all and (min-width: 600px) {
+    .site-nav {
+        clear: none;
+        float: left;
+        padding: 2.5rem 0 0 0.75rem;
+    }
+}
+
+.site-nav li {
+    display: inline-block;
+}
+
+.site-nav li::after {
+    content: "\2022";
+    color: var(--theme-color);
+    padding-left: 0.5em;
+    padding-right: 0.25em;
+    opacity: 0.8;
+}
+
+.site-nav li:last-child::after {
+    content: "";
+}
+
+.site-nav a {
+    color: var(--quote-color);
+    text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+    color: var(--base-color);
+}
+
+.site-info {
+    color: var(--quote-color);
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 1.25em;
+    margin-top: 2.5rem;
+}
+
+.home-page .site-info {
+    text-align: left;
+}
+
+.site-intro {
+    clear: left;
+    padding-top: 2rem;
+}
+
+.site-intro p:first-child {
+    font-size: 3rem;
+    line-height: 1em;
+}
+
+.site-intro p:nth-child(2) {
+    font-size: 1.5rem;
+    line-height: 1.25em;
+}
+
+.site-intro p + p {
+    margin-top: 1.5rem;
+}

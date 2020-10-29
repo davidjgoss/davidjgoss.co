@@ -1,0 +1,11 @@
+---
+layout: default
+---
+{% include header %}
+<article itemscope itemtype="http://schema.org/Article">
+    <header>
+        <h1 itemprop="headline">{{ title }}</h1>
+    </header>
+    <div class="long-form" itemprop="articleBody">{{ content | safe }}</div>
+</article>
+{% include footer %}
