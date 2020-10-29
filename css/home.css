@@ -1,0 +1,29 @@
+.home-page {
+    background-color: var(--theme-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+
+.home-page a {
+    color: #333;
+}
+
+.home-name {
+    color: #333;
+    font-size: 2.5rem;
+    line-height: 1.25em;
+    margin-bottom: 1.5rem;
+}
+
+.home-intro {
+    font-size: 1.5rem;
+    line-height: 1.25em;
+}
+
+.home-intro p + p {
+    margin-top: 1.5rem;
+}
