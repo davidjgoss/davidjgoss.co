@@ -10,7 +10,7 @@ layout: default
     <footer>
         <p class="byline">
             <a class="u-url byline__permalink" href="{{ page.url }}" itemprop="url">∞</a>
-            <time class="dt-published byline__date" datetime="{{ page.date }}" itemprop="datePublished">{{ page.date }}</time>
+            <time class="dt-published byline__date" datetime="{{ page.date | machineDate }}" itemprop="datePublished">{{ page.date | humanDate }}</time>
         </p>
     </footer>
 
