@@ -1,11 +1,11 @@
 html {
-	background: white;
-	color: var(--base-color);
 	font-size: 18px;
 	font-family: 'Overpass', 'Helvetica', sans-serif;
 }
 
 body {
+	background: white;
+	color: var(--base-color);
     line-height: 1.5rem;
 	max-width: 680px;
 	padding: 0 1rem;
