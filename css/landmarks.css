@@ -80,3 +80,17 @@
     clear: left;
     padding-top: 2rem;
 }
+
+.site-intro p:first-child {
+    font-size: 3rem;
+    line-height: 1em;
+}
+
+.site-intro p:nth-child(2) {
+    font-size: 1.5rem;
+    line-height: 1.25em;
+}
+
+.site-intro p + p {
+    margin-top: 1.5rem;
+}
