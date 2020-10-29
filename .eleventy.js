@@ -1,4 +1,5 @@
 const {DateTime} = require("luxon");
+const currentYear = new Date().getFullYear().toString();
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = eleventyConfig => {
@@ -8,6 +9,7 @@ module.exports = eleventyConfig => {
     eleventyConfig.addFilter("machineDate", dateObj => {
         return DateTime.fromJSDate(dateObj, {zone: "utc"}).toFormat("yyyy-LL-dd");
     });
+    eleventyConfig.addShortcode("currentYear", () => currentYear);
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPassthroughCopy("css");
     eleventyConfig.addPassthroughCopy("fonts");
