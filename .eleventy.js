@@ -16,7 +16,7 @@ module.exports = eleventyConfig => {
     eleventyConfig.setLibrary("md", markdownIt({html: true}).use(markdownItFootnote));
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPassthroughCopy("css");
+    eleventyConfig.addPassthroughCopy("static");
     eleventyConfig.addCollection("posts", collectionApi => {
         return collectionApi.getFilteredByGlob("blog/*.md").reverse();
     });
