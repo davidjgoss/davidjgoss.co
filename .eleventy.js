@@ -12,8 +12,6 @@ module.exports = eleventyConfig => {
     eleventyConfig.addShortcode("currentYear", () => currentYear);
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPassthroughCopy("css");
-    eleventyConfig.addPassthroughCopy("fonts");
-    eleventyConfig.addPassthroughCopy("js");
     eleventyConfig.addCollection("posts", collectionApi => {
         return collectionApi.getFilteredByGlob("blog/*.md").reverse();
     });

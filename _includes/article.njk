@@ -17,3 +17,14 @@ layout: default
     <div class="e-content entry__content long-form" itemprop="articleBody">{{ content | safe }}</div>
 </article>
 {% include 'footer.njk' %}
+<script>
+(function() {
+    if (document.querySelector("blockquote.twitter-tweet")) {
+        var script = document.createElement("script");
+        script.async = true;
+        script.charset = "utf-8";
+        script.src = "//platform.twitter.com/widgets.js";
+        document.body.appendChild(script);
+    }
+}());
+</script>

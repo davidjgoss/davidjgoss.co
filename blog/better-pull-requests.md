@@ -96,8 +96,6 @@ Also, don't forget about positive feedback. Yes, the main purpose of the review 
 
 ### Automate
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">@ programmers: do any of you actually enjoy manually reminding your coworkers about manual styling issues everyday?</p>&mdash; lynn (they) (@lynncyrin) <a href="https://twitter.com/lynncyrin/status/1293981514644910081?ref_src=twsrc%5Etfw">August 13, 2020</a></blockquote>
-
 If you find yourself leaving comments on pull requests about code style (indents, spacing, etc), something is wrong. Tools like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) were built to do exactly this sort of thing, so get going with one now if you haven't already. Being told your code doesn't look right hurts your feelings; better that it comes from a robot than a person.
 
 Aside from stylistic stuff, if you find yourself repeatedly picking up on the same pitfall or anti-pattern in code reviews, look into whether you can automate that too; many lint tools provide a way to [write custom rules](https://whiteclarkegroup.github.io/liquibase-linter/docs/custom-rules).
