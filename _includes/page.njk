@@ -1,6 +1,10 @@
+---
+layout: default
+---
+{% include 'header.njk' %}
 <article itemscope itemtype="http://schema.org/Article">
     <header>
-        <h1 itemprop="headline">{{ page.title }}</h1>
+        <h1 itemprop="headline">{{ title }}</h1>
     </header>
-    <div class="long-form" itemprop="articleBody">{{ content }}</div>
+    <div class="long-form" itemprop="articleBody">{{ content | safe }}</div>
 </article>

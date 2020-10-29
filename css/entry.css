@@ -1,0 +1,25 @@
+.byline {
+	color: var(--fade-color);
+}
+
+.byline__permalink {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.byline__date,
+.byline__source {
+	font-weight: bold;
+}
+
+.entry--list {
+	margin-bottom: 2.5em;
+}
+
+.entry--full .byline {
+    margin-bottom: 1.5rem;
+}
+
+.entry--full .long-form > :first-child {
+    font-size: 1.25em;
+}

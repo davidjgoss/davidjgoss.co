@@ -1,28 +1,18 @@
 ---
 layout: default
 ---
+{% include 'header.njk' %}
 <article class="h-entry entry entry--blog entry--full" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
-        <h1 class="p-name entry__title" itemprop="headline">{{ page.title }}</h1>
+        <h1 class="p-name entry__title" itemprop="headline">{{ title }}</h1>
     </header>
 
     <footer>
         <p class="byline">
             <a class="u-url byline__permalink" href="{{ page.url }}" itemprop="url">∞</a>
-            <time class="dt-published byline__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_long_string }}</time>
-            <span class="byline__split">by</span>
-            <span class="p-author h-card byline__source" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span class="p-name" itemprop="name">{{ page.author }}</span>
-            </span>
-            {% if page.tags.size > 0 %}
-                <span class="byline__split">tagged</span>
-                {% for tag in page.tags %}
-                    <span class="byline__tag">{{ tag }}</span>
-                {% endfor %}
-            {% endif %}
-
+            <time class="dt-published byline__date" datetime="{{ page.date }}" itemprop="datePublished">{{ page.date }}</time>
         </p>
     </footer>
 
-    <div class="e-content entry__content long-form" itemprop="articleBody">{{ content }}</div>
+    <div class="e-content entry__content long-form" itemprop="articleBody">{{ content | safe }}</div>
 </article>

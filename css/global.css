@@ -1,0 +1,107 @@
+html {
+	background: #fff;
+	color: var(--base-color);
+	font-size: 18px;
+	font-family: 'Overpass', 'Helvetica', sans-serif;
+	padding: 0 1em;
+	border-top: 0.25em solid var(--theme-color);
+}
+
+body {
+    line-height: 1.5rem;
+	max-width: 680px;
+	margin: 0 auto;
+}
+
+a {
+	color: var(--theme-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+h1 a, h2 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 3.25em;
+	line-height: 1em;
+}
+
+h2 {
+	font-size: 1.75em;
+	line-height: 1em;
+}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+h4 {
+	font-size: 1.25em;
+	line-height: 1rem;
+}
+
+blockquote {
+	position: relative;
+	color: var(--fade-color);
+	padding: 0 3em;
+}
+
+blockquote::before {
+	content: "\201C";
+	position: absolute;
+	top: 0.3em;
+	left: 0.3em;
+	color: var(--theme-color);
+	font-size: 3em;
+}
+
+blockquote p + p {
+	margin-top: 1.5rem;
+}
+
+@media all and (min-width:600px) {
+	blockquote {
+		padding: 0 4em;
+	}
+
+	blockquote::before {
+		left: 0.6em;
+	}
+}
+
+hr {
+	clear: both;
+	background-color: var(--shade-color);
+    background-image: linear-gradient(left, #fff, var(--fade-color), #fff);
+	color: #fff;
+	width: 75%;
+	height: 1px;
+	border: 0;
+	margin: 2em auto;
+}
+
+.long-form > * + * {
+	margin-top: 1.5rem;
+}
+
+.long-form ul {
+	list-style: square outside;
+	padding-left: 1.5em;
+}
+
+.long-form ol {
+	list-style: decimal outside;
+	padding-left: 1.5em;
+}
+
+.twitter-tweet-rendered {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+}

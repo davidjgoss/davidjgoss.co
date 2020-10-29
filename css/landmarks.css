@@ -1,99 +1,82 @@
 .site-header {
-    @include clearfix();
-	margin-bottom: 2.5em;
+    margin-bottom: 2.5em;
 }
 
 .site-logo {
-	float: left;
-	background: $mid-theme-color;
-	color: lighten($light-theme-color, 50%);
-	text-transform: uppercase;
-	text-decoration: none;
-	font-family: $heading-font;
-	font-weight: bold;
-	font-size: 1.5em;
-	line-height: 1em;
-	padding: 0.5em;
+    float: left;
+    background: var(--theme-color);
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 0.5em;
     padding-top: 2.5rem;
-	border: 1px solid $mid-theme-color;
+    border: 1px solid var(--theme-color);
+}
 
-	.home-page & {
-		@media (min-height:650px) {
-			padding-top: 5rem;
-		}
-	}
+@media (min-height: 650px) {
+    .home-page .site-logo {
+        padding-top: 5rem;
+    }
 }
 
 .site-nav {
-    @include clearfix();
     clear: both;
-	list-style: none;
-	text-transform: uppercase;
-	font-family: $heading-font;
-	font-weight: bold;
-	padding-top: 0.5rem;
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 0.5rem;
+}
 
-	li {
-		display: inline-block;
+@media all and (min-width: 600px) {
+    .site-nav {
+        clear: none;
+        float: left;
+        padding: 2.5rem 0 0 0.75rem;
+    }
+}
 
-		&:after {
-			content: "\2022";
-			color: $light-theme-color;
-			padding-left: 0.5em;
-			padding-right: 0.25em;
-			opacity: 0.8;
-		}
+.site-nav li {
+    display: inline-block;
+}
 
-		&:last-child:after {
-			content: "";
-		}
-	}
+.site-nav li::after {
+    content: "\2022";
+    color: var(--theme-color);
+    padding-left: 0.5em;
+    padding-right: 0.25em;
+    opacity: 0.8;
+}
 
-	a {
-		color: $quote-color;
-		text-decoration: none;
+.site-nav li:last-child::after {
+    content: "";
+}
 
-		&:hover, &:focus {
-			color: $base-color;
-		}
-	}
+.site-nav a {
+    color: var(--quote-color);
+    text-decoration: none;
+}
 
-	@media all and (min-width:600px) {
-		clear: none;
-		float: left;
-		padding: 2.5rem 0 0 0.75rem;
-	}
+.site-nav a:hover,
+.site-nav a:focus {
+    color: var(--base-color);
 }
 
 .site-info {
-	color: $quote-color;
-	text-align: center;
-	font-size: 0.75em;
-	line-height: 1.25em;
-	margin-top: 2.5rem;
+    color: var(--quote-color);
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 1.25em;
+    margin-top: 2.5rem;
+}
 
-	.home-page & {
-		text-align: left;
-	}
+.home-page .site-info {
+    text-align: left;
 }
 
 .site-intro {
-	clear: left;
-	padding-top: 2rem;
-
-	p {
-		&:first-child {
-			font-size: 3rem;
-			line-height: 1em;
-		}
-
-		&:nth-child(2) {
-			font-size: 1.5rem;
-			line-height: 1.25em;
-		}
-
-		& + p {
-			margin-top: 1.5rem;
-		}
-	}
+    clear: left;
+    padding-top: 2rem;
 }

@@ -8,7 +8,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
 pre, code, kbd {
 	font-size: 1em;
-	font-family: $mono-font;
+	font-family: 'JetBrainsMono', 'Consolas', 'Courier New', monospace;
 	word-spacing: normal;
 	word-break: normal;
 	-moz-tab-size: 4;
@@ -31,11 +31,11 @@ pre {
 	padding: 1.5em;
 	white-space: pre;
 	overflow: auto;
+}
 
-	code {
-		background-color: transparent;
-		color: inherit;
-	}
+pre code {
+	background-color: transparent;
+	color: inherit;
 }
 
 .token.comment,
