@@ -1,15 +1,14 @@
 html {
-	background: #fff;
+	background: white;
 	color: var(--base-color);
 	font-size: 18px;
 	font-family: 'Overpass', 'Helvetica', sans-serif;
-	padding: 0 1em;
-	border-top: 0.25em solid var(--theme-color);
 }
 
 body {
     line-height: 1.5rem;
 	max-width: 680px;
+	padding: 0 1rem;
 	margin: 0 auto;
 }
 
