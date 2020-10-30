@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% include header %}
+<article itemscope itemtype="http://schema.org/Article">
+    <section class="long-form" itemprop="articleBody">
+        <img class="about-photo" alt="Photo of David Goss" src="/static/me.jpg"/>
+        {{ content | safe }}
+    </section>
+    <section class="contact">
+        <div class="contact__front">
+            <h3 class="contact__name">David Goss</h3>
+            <ul class="contact__methods">
+                <li><a href="mailto:david@davidgoss.co">Email <strong>david@davidgoss.co</strong></a></li>
+                <li><a href="https://twitter.com/intent/tweet?text=@davidjgoss">Tweet <strong>@davidjgoss</strong></a></li>
+            </ul>
+        </div>
+        <div class="contact__back"></div>
+        <div class="contact__back"></div>
+    </section>
+</article>
+{% include footer %}
