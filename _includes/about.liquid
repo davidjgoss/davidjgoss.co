@@ -2,20 +2,22 @@
 <html lang="en">
 {% include head %}
 <body class="about-page">
-<article itemscope itemtype="http://schema.org/Article">
-    <section class="contact">
+<main class="main" role="main">
+    <section class="contact" itemscope itemtype="https://schema.org/Person">
         <div class="contact__card contact__card--back"></div>
         <div class="contact__card contact__card--back"></div>
         <div class="contact__card contact__card--front">
             <img class="contact__photo" alt="Photo of David Goss" src="/static/me.jpg"/>
-            <h3 class="contact__name"><a href="/">David Goss</a></h3>
-            <a href="mailto:david@davidgoss.co">david@davidgoss.co</a>
+            <h3 class="contact__name">
+                <a href="/"><span itemprop="name">David Goss</span></a>
+            </h3>
+            <a href="mailto:david@davidgoss.co" itemprop="email">david@davidgoss.co</a>
         </div>
     </section>
     <section class="long-form" itemprop="articleBody">
         {{ content | safe }}
     </section>
-</article>
+</main>
 </body>
 </html>
 
