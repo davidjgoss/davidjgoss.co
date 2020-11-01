@@ -11,6 +11,7 @@
 .contact {
     position: relative;
     width: 25rem;
+    padding-top: 3.5rem;
     margin: 0 auto 2rem auto;
 }
 
@@ -51,4 +52,28 @@
 .contact__name a {
     color: inherit;
     text-decoration: none;
+}
+
+.synopsis {
+    column-count: 2;
+    column-gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.meta {
+    text-align: center;
+}
+
+.meta-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meta-flow li {
+    padding: 0 0.75rem;
+}
+
+.meta-flow img {
+    width: 4rem;
 }
