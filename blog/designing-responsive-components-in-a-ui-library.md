@@ -105,3 +105,9 @@ In consuming project:
 ~~~
 
 Whilst working this way will ensure your UI library doesn't ship with counter-productive responsive behaviour, it does mean that in the majority of cases things won't "just work" out of the box --- that is, you'll tend to have to use the mixins to make a component look right in your project's context, rather than just chuck it in. You could worry about whether people working on the consuming projects will get this right, but instead spend that time writing documentation so you can help them get it right.
+
+- - -
+
+**Update on 7 November 2020:** Container queries are now going to be a thing:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Blink: Intent to Prototype: Container Queries <a href="https://t.co/sIlv6klTay">https://t.co/sIlv6klTay</a></p>&mdash; Intent To Ship (@intenttoship) <a href="https://twitter.com/intenttoship/status/1324351881251033089?ref_src=twsrc%5Etfw">November 5, 2020</a></blockquote>
