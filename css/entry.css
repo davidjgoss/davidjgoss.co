@@ -7,8 +7,7 @@
 	text-decoration: none;
 }
 
-.byline__date,
-.byline__source {
+.byline__date {
 	font-weight: bold;
 }
 
