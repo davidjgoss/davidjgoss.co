@@ -6,6 +6,9 @@ const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = eleventyConfig => {
+    eleventyConfig.addFilter("title", templateTitle => {
+        return templateTitle ? `${templateTitle} ~ David Goss` : "David Goss";
+    });
     eleventyConfig.addFilter("humanDate", dateObj => {
         return DateTime.fromJSDate(dateObj, {zone: "utc"}).toLocaleString(DateTime.DATE_FULL);
     });
