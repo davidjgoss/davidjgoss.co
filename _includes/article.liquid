@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% include header %}
+{% include "header" %}
 <article class="h-entry entry entry--blog entry--full" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
         <h1 class="p-name entry__title" itemprop="headline">{{ title }}</h1>
@@ -16,7 +16,7 @@ layout: default
 
     <div class="e-content entry__content long-form" itemprop="articleBody">{{ content | safe }}</div>
 </article>
-{% include footer %}
+{% include "footer" %}
 <script>
 (function() {
     if (document.querySelector("blockquote.twitter-tweet")) {

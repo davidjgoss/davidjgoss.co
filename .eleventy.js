@@ -6,6 +6,7 @@ const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = eleventyConfig => {
+    eleventyConfig.setLiquidOptions({dynamicPartials: true});
     eleventyConfig.addFilter("title", templateTitle => {
         return templateTitle ? `${templateTitle} ~ David Goss` : "David Goss";
     });
