@@ -1,4 +1,5 @@
 const {DateTime} = require("luxon");
+const CleanCSS = require("clean-css");
 const currentYear = new Date().getFullYear().toString();
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -7,6 +8,9 @@ const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = eleventyConfig => {
     eleventyConfig.setLiquidOptions({dynamicPartials: true});
+    eleventyConfig.addFilter("cssmin", code => {
+        return new CleanCSS({}).minify(code).styles;
+    });
     eleventyConfig.addFilter("title", templateTitle => {
         return templateTitle ? `${templateTitle} ~ David Goss` : "David Goss";
     });
