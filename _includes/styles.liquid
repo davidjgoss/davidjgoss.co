@@ -2,14 +2,22 @@
 {% include "../css/vars.css" %}
 {% include "../css/global.css" %}
 
-{% include "../css/header.css" %}
-{% include "../css/blog.css" %}
-{% include "../css/byline.css" %}
+{% if layout == "blog" %}
+    {% include "../css/header.css" %}
+    {% include "../css/blog.css" %}
+    {% include "../css/byline.css" %}
+{% endif %}
 
-{% include "../css/entry.css" %}
-{% include "../css/code.css" %}
-{% include "../css/footnotes.css" %}
-{% include "../css/quotes.css" %}
-{% include "../css/tweet.css" %}
+{% if layout == "article" %}
+    {% include "../css/header.css" %}
+    {% include "../css/byline.css" %}
+    {% include "../css/entry.css" %}
+    {% include "../css/code.css" %}
+    {% include "../css/footnotes.css" %}
+    {% include "../css/quotes.css" %}
+    {% include "../css/tweet.css" %}
+{% endif %}
 
-{% include "../css/home.css" %}
+{% if layout == "home" %}
+    {% include "../css/home.css" %}
+{% endif %}
