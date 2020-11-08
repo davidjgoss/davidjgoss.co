@@ -2,6 +2,12 @@
     margin-bottom: 2.5rem;
 }
 
+.site-header::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .site-logo {
     float: left;
     background: var(--theme-color);
