@@ -1,0 +1,12 @@
+.byline {
+	color: var(--fade-color);
+}
+
+.byline__permalink {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.byline__date {
+	font-weight: bold;
+}
