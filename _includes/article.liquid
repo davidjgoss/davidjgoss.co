@@ -2,7 +2,7 @@
 layout: default
 ---
 {% include "header" %}
-<article class="h-entry entry entry--blog entry--full" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="h-entry entry" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
         <h1 class="p-name entry__title" itemprop="headline">{{ title }}</h1>
     </header>
@@ -14,7 +14,7 @@ layout: default
         </p>
     </footer>
 
-    <div class="e-content entry__content long-form" itemprop="articleBody">{{ content | safe }}</div>
+    <div class="e-content entry__content" itemprop="articleBody">{{ content | safe }}</div>
 </article>
 {% include "footer" %}
 <script>
