@@ -13,7 +13,7 @@ If you’re working on a REST API, chances are it’s somehow expressed as an [O
 
 The best-known tool for this is [Swagger UI](https://github.com/swagger-api/swagger-ui). But lately I’ve switched to using [Redoc](https://github.com/Redocly/redoc), and to me it feels like a real step up. On a practical level, it’s responsive and makes smart use of the space in a wider viewport. It also has a clearer presentation of schema objects, particularly with `oneOf` (where a field can be one of several different shapes). It’s aesthetically just a bit nicer too.
 
-(image?)
+![Screenshot of Redoc rendering the Petstore API](/static/blog/redoc-screenshot.png)
 
 That’s only half the story though. For an API reference to be useful to a developer, they probably need to know what to look for and why. What are the principles and conventions in play here? What do all these terms mean? What sequence of requests will I need to get this thing done? Where is this platform headed? If the answers to these questions are there, you could avoid a lot of repetitive support.
 
@@ -35,8 +35,10 @@ I’ve put up a [simple example repo](https://github.com/davidjgoss/docusaurus-r
 1. Initialise a Docusaurus project
 2. Make your OpenAPI spec available to your project
 3. Add it as a custom field in your `docusaurus.config.js`
-4. Install Redoc and its peer dependencies
+4. Install Redoc and its peer dependencies[^buffer-polyfill]
 5. Add a new page (with a navbar link) and include the `RedocStandalone` component
+
+[^buffer-polyfill]: In the latest alphas of Docusaurus 2, you also need to add a small Webpack override (via Docusaurus's [plugin system](https://v2.docusaurus.io/docs/lifecycle-apis#configurewebpackconfig-isserver-utils)) to polyfill `Buffer`. This is because in its recent version 5 release, Webpack [stopped automatically polyfilling](https://blog.sindresorhus.com/webpack-5-headache-b6ac24973bf1) Node.js APIs that aren't available in browsers.
 
 The React code for your page could look something like:
 
