@@ -93,11 +93,13 @@ const options = {
 <RedocStandalone options={options}/>
 ```
 
-Unfortunately if you try to do that with most of the supported properties under `colors` you’ll hit an error, since Redoc does some processing to generate light/dark variants etc and expects the values you give it to be parseable as HEX or RGB. I think this could be addressed though.
+This is a great example of web standards making things better, not by providing the whole solution, but by making it easier to use tools together and write less code.
+
+Unfortunately if you try to use the custom property names like that with most of what's under `colors`, you’ll hit an error, since Redoc [does some processing](https://github.com/Redocly/redoc/blob/master/src/theme.ts#L18) to generate light/dark variants etc and expects the values you give it to be parseable as HEX or RGB. I think this could be addressed though.
 
 ### Links
 
-Since Redoc supports hash links for operations and tags, you can link straight to relevant bits of your API reference from their context in your documentation content:
+Since Redoc supports deep links for operations and tags, you can link straight to relevant bits of your API reference from a relevant context in your documentation content:
 
 ```markdown
 See the docs for [creating a quote](/api-reference#operation/create-quote).
@@ -107,6 +109,13 @@ You could potentially add a `<LinkToOperation>` React component to abstract this
 
 ### Distribution
 
-Docusaurus builds your site as a set of static HTML, CSS and JavaScript files which you can then deploy with Netlify, GitHub pages or whatever your thing is.
+Docusaurus builds your site as a set of static HTML, CSS and JavaScript files which you can then deploy with Netlify, GitHub Pages or whatever your thing is.
 
 It’s worth noting that Redoc has [a neat CLI](https://github.com/Redocly/redoc/tree/master/cli) that allows you to generate zero-dependency HTML file from your API spec. This portability could be useful if your API isn’t public and circulation of your documentation is controlled. However, once you start building a site around it, this sadly isn’t an option any more. Besides the fact you now have multiple pages, most site frameworks (including Docusaurus) are pretty opinionated in expecting your site to be served from a web server, at a [known path](https://github.com/gatsbyjs/gatsby/discussions/14161). That’s today, anyway; the new [Web Bundles API](https://web.dev/web-bundles/) looks like it might solve this problem eventually.
+
+- - - 
+
+I'm pretty happy with how this combination of tools has worked on my projects this year. I'm looking at a few other ideas to improve it:
+
+- Using [Docusaurus blog functionality](https://v2.docusaurus.io/docs/blog) to add a changelog for the API.
+- Using [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) to enable trying API operations from the docs without pointing at a live service.
