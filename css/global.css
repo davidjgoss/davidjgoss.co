@@ -27,21 +27,22 @@ h1 a, h2 a {
 }
 
 h1 {
-	font-size: 3.25em;
+	font-size: 2rem;
+	font-size: max(2rem, min(10vw, 10vh, 3.5rem));
 	line-height: 1em;
 }
 
 h2 {
-	font-size: 1.75em;
+	font-size: 1.75rem;
 	line-height: 1em;
 }
 
 h3 {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	line-height: 1em;
 }
 
 h4 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	line-height: 1rem;
 }
