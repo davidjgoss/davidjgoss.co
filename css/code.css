@@ -7,7 +7,6 @@ https://prismjs.com/download.html#themes=prism-tomorrow */
  */
 
 pre, code, kbd {
-	font-size: 1em;
 	font-family: 'Overpass Mono', 'Consolas', 'Courier New', monospace;
 	word-spacing: normal;
 	word-break: normal;
@@ -20,13 +19,15 @@ pre, code, kbd {
 	hyphens: none;
 }
 
-code {
-	background-color: #2d2d2d;
-	color: #ccc;
-	padding: 0 0.25em;
+code, kbd {
+	font-size: 0.875em;
+	background-color: transparent;
+	color: var(--quote-color);
+	border-bottom: 1px dotted var(--fade-color);
 }
 
 pre {
+	font-size: 0.75em;
 	background-color: #2d2d2d;
 	color: #ccc;
 	padding: 1.5em;
@@ -35,8 +36,9 @@ pre {
 }
 
 pre code {
-	background-color: transparent;
+	font-size: 1em;
 	color: inherit;
+	border-bottom: none;
 }
 
 .token.comment,
