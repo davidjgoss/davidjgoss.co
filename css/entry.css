@@ -32,11 +32,17 @@
 }
 
 @media all and (min-width: 830px) {
-    .entry__content img,
-    .entry__content pre {
+    .entry__content img {
         display: block;
         max-width: calc(100% + 150px);
         margin-left: -75px;
         margin-right: -75px;
+    }
+
+    .entry__content pre {
+        display: block;
+        max-width: calc(100% + 36px);
+        margin-left: -18px;
+        margin-right: -18px;
     }
 }
