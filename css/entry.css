@@ -2,10 +2,6 @@
     margin-top: 1.5rem;
 }
 
-.entry__content > :first-child {
-    font-size: 1.25em;
-}
-
 .entry__content > * + * {
     margin-top: 1.5rem;
 }
