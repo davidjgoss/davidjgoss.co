@@ -10,7 +10,7 @@
 
 .site-logo {
     float: left;
-    background: var(--theme-color);
+    background: var(--primary-color);
     color: white;
     text-transform: uppercase;
     text-decoration: none;
@@ -31,7 +31,7 @@
 }
 
 .site-info {
-    color: var(--quote-color);
+    color: var(--darkish-color);
     text-align: center;
     font-size: 0.75em;
     line-height: 1.25em;

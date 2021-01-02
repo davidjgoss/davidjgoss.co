@@ -13,8 +13,8 @@ body {
 }
 
 a {
-	color: var(--theme-color);
-	border-bottom: 1px solid var(--theme-color);
+	color: var(--primary-color);
+	border-bottom: 1px solid var(--primary-color);
 	text-decoration: none;
 }
 

@@ -18,8 +18,8 @@
 
 .entry__content hr {
     clear: both;
-    background-color: var(--shade-color);
-    background-image: linear-gradient(left, #fff, var(--fade-color), #fff);
+    background-color: var(--light-color);
+    background-image: linear-gradient(left, #fff, var(--mid-color), #fff);
     color: #fff;
     width: 75%;
     height: 1px;
@@ -34,7 +34,7 @@
     margin: 0 auto;
     font-style: italic;
     text-align: center;
-    color: var(--quote-color);
+    color: var(--darkish-color);
 }
 
 @media (min-width: 850px) {
