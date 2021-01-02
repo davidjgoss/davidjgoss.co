@@ -22,8 +22,8 @@ pre, code, kbd {
 code, kbd {
 	font-size: 0.875em;
 	background-color: transparent;
-	color: var(--quote-color);
-	border-bottom: 1px dotted var(--fade-color);
+	color: var(--darkish-color);
+	border-bottom: 1px dotted var(--mid-color);
 }
 
 pre {
@@ -37,6 +37,11 @@ pre {
 
 pre code {
 	font-size: 1em;
+	color: inherit;
+	border-bottom: none;
+}
+
+a code {
 	color: inherit;
 	border-bottom: none;
 }

@@ -10,28 +10,28 @@
 
 .site-logo {
     float: left;
-    background: var(--theme-color);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--contrast-color);
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5em;
     line-height: 1em;
-    padding: 0.75em;
-    padding-top: 1.5em;
+    padding: 1rem;
+    padding-top: max(1rem, min(5vh, 2rem));
 }
 
 .site-nav {
     float: left;
     margin: 1rem;
-    margin-top: 2.25rem;
-    color: #666;
-    text-decoration: none;
+    margin-top: max(1rem, min(5vh, 2rem));
+    border-bottom: none;
+    color: var(--darkish-color);
     text-transform: uppercase;
 }
 
 .site-info {
-    color: var(--quote-color);
+    color: var(--darkish-color);
     text-align: center;
     font-size: 0.75em;
     line-height: 1.25em;

@@ -1,6 +1,6 @@
 .footnotes {
     font-size: 0.75rem;
-    color: var(--quote-color);
+    color: var(--darkish-color);
 }
 
 .footnotes-sep {
@@ -10,4 +10,12 @@
 .footnote-backref,
 .footnote-ref a {
     text-decoration: none;
+    border-bottom: none;
+}
+
+.footnote-ref {
+    position: relative;
+    top: -0.5em;
+    font-size: 0.75em;
+    vertical-align: inherit;
 }

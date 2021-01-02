@@ -5,6 +5,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
+const markdownItImplicitFigures = require("markdown-it-implicit-figures");
 
 module.exports = eleventyConfig => {
     eleventyConfig.setLiquidOptions({dynamicPartials: true});
@@ -21,7 +22,9 @@ module.exports = eleventyConfig => {
         return DateTime.fromJSDate(dateObj, {zone: "utc"}).toFormat("yyyy-LL-dd");
     });
     eleventyConfig.addShortcode("currentYear", () => currentYear);
-    eleventyConfig.setLibrary("md", markdownIt({html: true}).use(markdownItFootnote));
+    eleventyConfig.setLibrary("md", markdownIt({html: true})
+        .use(markdownItImplicitFigures, {figcaption: true})
+        .use(markdownItFootnote));
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPassthroughCopy("static");

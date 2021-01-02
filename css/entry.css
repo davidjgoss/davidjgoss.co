@@ -18,8 +18,8 @@
 
 .entry__content hr {
     clear: both;
-    background-color: var(--shade-color);
-    background-image: linear-gradient(left, #fff, var(--fade-color), #fff);
+    background-color: var(--light-color);
+    background-image: linear-gradient(left, #fff, var(--mid-color), #fff);
     color: #fff;
     width: 75%;
     height: 1px;
@@ -27,17 +27,26 @@
     margin: 2em auto;
 }
 
-@media all and (min-width: 830px) {
-    .entry__content img {
+.entry__content figcaption {
+    font-size: 0.875em;
+    line-height: 1em;
+    max-width: calc(700px - 2rem);
+    margin: 0 auto;
+    font-style: italic;
+    text-align: center;
+    color: var(--darkish-color);
+}
+
+@media (min-width: 850px) {
+    .entry__content figure {
         display: block;
-        max-width: calc(100% + 150px);
+        width: calc(100% + 150px);
         margin-left: -75px;
         margin-right: -75px;
     }
 
     .entry__content pre {
-        display: block;
-        max-width: calc(100% + 36px);
+        width: calc(100% + 36px);
         margin-left: -18px;
         margin-right: -18px;
     }
