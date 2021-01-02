@@ -27,7 +27,7 @@
     margin: 2em auto;
 }
 
-@media all and (min-width: 830px) {
+@media all and (min-width: 850px) {
     .entry__content img {
         display: block;
         max-width: calc(100% + 150px);
