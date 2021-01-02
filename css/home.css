@@ -10,7 +10,7 @@
 }
 
 .home-page a {
-    color: white;
+    color: var(--contrast-color);
     border-bottom: none;
 }
 

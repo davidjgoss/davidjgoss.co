@@ -10,8 +10,8 @@
 
 .site-logo {
     float: left;
-    background: var(--primary-color);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--contrast-color);
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
@@ -26,7 +26,7 @@
     margin: 1rem;
     margin-top: max(1rem, min(5vh, 2rem));
     border-bottom: none;
-    color: #666;
+    color: var(--darkish-color);
     text-transform: uppercase;
 }
 
