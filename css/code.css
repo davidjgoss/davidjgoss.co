@@ -41,6 +41,11 @@ pre code {
 	border-bottom: none;
 }
 
+a code {
+	color: inherit;
+	border-bottom: none;
+}
+
 .token.comment,
 .token.block-comment,
 .token.prolog,

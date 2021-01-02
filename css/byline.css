@@ -4,7 +4,7 @@
 
 .byline__permalink {
 	font-weight: bold;
-	text-decoration: none;
+	border-bottom: none;
 }
 
 .byline__date {

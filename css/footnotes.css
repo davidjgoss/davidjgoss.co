@@ -10,6 +10,7 @@
 .footnote-backref,
 .footnote-ref a {
     text-decoration: none;
+    border-bottom: none;
 }
 
 .footnote-ref {

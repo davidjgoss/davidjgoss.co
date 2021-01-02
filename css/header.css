@@ -25,8 +25,8 @@
     float: left;
     margin: 1rem;
     margin-top: max(1rem, min(5vh, 2rem));
+    border-bottom: none;
     color: #666;
-    text-decoration: none;
     text-transform: uppercase;
 }
 
