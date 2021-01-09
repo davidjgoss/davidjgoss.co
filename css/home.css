@@ -9,11 +9,6 @@
     padding: 0 1.5rem;
 }
 
-.home-page a {
-    color: var(--contrast-color);
-    border-bottom: none;
-}
-
 .home-name {
     font-size: 2.5rem;
     line-height: 1.25em;
@@ -28,6 +23,10 @@
 
 .home-intro p + p {
     margin-top: 1.5rem;
+}
+
+.home-social a {
+    border-bottom: none;
 }
 
 .home-social a + a {

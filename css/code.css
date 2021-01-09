@@ -23,7 +23,6 @@ code, kbd {
 	font-size: 0.875em;
 	background-color: transparent;
 	color: var(--darkish-color);
-	border-bottom: 1px dotted var(--mid-color);
 }
 
 pre {

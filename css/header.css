@@ -11,14 +11,13 @@
 .site-logo {
     float: left;
     background-color: var(--primary-color);
-    color: var(--contrast-color);
     text-transform: uppercase;
-    text-decoration: none;
     font-weight: bold;
     font-size: 1.5em;
     line-height: 1em;
     padding: 1rem;
     padding-top: max(1rem, min(5vh, 2rem));
+    border-bottom: none;
 }
 
 .site-nav {

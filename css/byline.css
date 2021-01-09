@@ -1,5 +1,5 @@
 .byline {
-	color: var(--mid-color);
+	color: var(--darkish-color);
 }
 
 .byline__permalink {
@@ -8,5 +8,5 @@
 }
 
 .byline__date {
-	font-weight: bold;
+	font-style: italic;
 }
