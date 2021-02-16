@@ -3,12 +3,12 @@ permalink: "2019/09/03/better-pull-requests/"
 date: 2019-09-03
 title: Better Pull Requests
 summary:
-  I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process.
+  I spend a lot of my time on pull requests. I have a few thoughts about what works and what doesn't in the pull request process.
 latest:
   better pull requests
 ---
 
-*I spend a lot of my time at work on pull requests - between ones I request and review, dozens per day. Through this, I've formed some opinions about what works and what doesn't in the pull request process.*
+*I spend a lot of my time on pull requests. I have a few thoughts about what works and what doesn't in the pull request process.*
 
 - - - 
     
@@ -34,11 +34,9 @@ Once you get into actually adding your new functionality, keep to this mantra of
 
 ### Tell the story with your commits (sometimes)
 
-If you _do_ end up with a big pull request --- e.g. dozens of files and hundreds of lines affected --- reviewers could have a hard time getting a sense of what your change is really about, where the important bits are, etc. Trawling through a huge diff looking for the big picture is no fun, and your reviewers didn't sign up for it.
+If you _do_ end up with something a bit big, it can be hard for reviewers to know where to start with a big diff.
 
-This is where your commits[^onlygit] can be really helpful and tell a lot of the story for you. However, this does depend on having a sequence of commits that form a coherent narrative. This sounds like a lot of effort, but you don't have to obsess about as you go along; it's a by-product of committing frequently.
-
-[^onlygit]: When I talk about commits, I am really only talking about Git; if you are using something else, I honestly don't know what to tell you.
+This is where your commits can be really helpful and tell a lot of the story for you. However, this does depend on having a sequence of commits that form a coherent narrative. This sounds like a lot of effort, but you don't have to obsess about as you go along; it's a by-product of committing frequently.
 
 By frequently, I don't mean daily or hourly, I mean with _every change_ you make, in a tight loop of "compile, test, commit"[^compiletestcommit]. By the time you're ready to open your pull request, you'll have a list of commits that is probably too granular and a bit messy, but you can use [interactive rebase](https://tgvashworth.com/2014/02/24/rebase-you-interactively-for-great-good.html) to clean up and consolidate[^moarrebase] into something that's useful for a reviewer to follow.
 
@@ -50,7 +48,9 @@ By frequently, I don't mean daily or hourly, I mean with _every change_ you make
 
 Away from the actual code, there are a few things you can do to make sure your pull request is approachable.
 
-Don't leave the description blank. Use it to clearly outline:
+Don't leave the description blank. Use it to clearly outline[^prtemplate]:
+
+[^prtemplate]: If you don't have a template for PRs, you might consider trying one - but keep it simple and don't overenforce it.
 
 - The reason for the changes
 - What they consist of at a high level
@@ -64,15 +64,11 @@ Finally, spend five minutes looking over the pull request yourself before you ad
 
 ### Choice of reviewers
 
-Pull requests are a really good opportunity for people to learn[^notjustagate], so it's a bit of a waste if each developer in a team just tags the lead for review. I usually tag everyone in the team who's at work that day, perhaps sparing anyone who is super-focused on something and/or on a deadline. I don't expect _everyone_ will review or provide feedback, but at least everyone gets a chance to see what's going on.
-
-[^notjustagate]: Just one of several good side effects of having more sets of eyes on a piece of work, beyond just making sure it's "good enough". It's why when I see hot takes about code review just slowing people down, I can't help but think they're missing the point.
+Pull requests are a really good opportunity for people to learn, so it's a bit of a waste if just one person is tagged for review (especially if it's always the same person). On the flipside, having the whole team tagged on every pull request can become a source of distraction, and makes it more likely that no one will review as each person expects that someone else will get to it. So figure out what works for your team here on the balance of throughput and knowledge sharing.
 
 Also, think about people outside the immediate team: is there someone who has worked in this area a lot and could give some valuable feedback, or someone who's expressed an interest in a tool or technique you've used and might like to see what you've done?
 
 If there's one person whose approval you _really_ want before you're happy to merge, make sure you tell them, so they can avoid being an unwitting blocker.
-
-- - - 
 
 ## Be a good reviewer
 
@@ -98,12 +94,17 @@ Also, don't forget about positive feedback. Yes, the main purpose of the review 
 
 If you find yourself leaving comments on pull requests about code style (indents, spacing, etc), something is wrong. Tools like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) were built to do exactly this sort of thing, so get going with one now if you haven't already. Being told your code doesn't look right hurts your feelings; better that it comes from a robot than a person.
 
-Aside from stylistic stuff, if you find yourself repeatedly picking up on the same pitfall or anti-pattern in code reviews, look into whether you can automate that too; many lint tools provide a way to [write custom rules](https://whiteclarkegroup.github.io/liquibase-linter/docs/custom-rules).
+Aside from stylistic stuff, if you find yourself repeatedly picking up on the same pitfall or anti-pattern in code reviews, look into whether you can automate that too; many lint tools provide a way to [write custom rules](https://liquibase-linter.dev/docs/custom-rules).
 
 - - -
 
-That's it. Hopefully, you've gotten the sense that what's good practise for smooth pull requests is also good practise for software in general, and that time taken to get them right is time well spent.
+Should you even do pull requests though?
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Pull requests introduce a human delay into a team&#39;s integration workflow. <a href="https://twitter.com/kief?ref_src=twsrc%5Etfw">@kief</a> explains how and outlines other ways to do code review<a href="https://t.co/EBAKG9Mxl8">https://t.co/EBAKG9Mxl8</a></p>&mdash; Martin Fowler (@martinfowler) <a href="https://twitter.com/martinfowler/status/1345375503277023232?ref_src=twsrc%5Etfw">January 2, 2021</a></blockquote>
+
+I think the article cited there is a very fair critique of the way that pull requests often work in practise. Long-lived branches and big pull requests sitting around for days aren't good on any level - but it doesn't have to be that way. There are some great approaches outlined in the article that you can use with pull requests to avoid them becoming a bottleneck, like pairing as you go.
 
 Further reading:
 
 - [_Code Reviews at Medium_](https://medium.engineering/code-reviews-at-medium-bed2c0dce13a) by Christine Donovan
+- [_Code Review Best Practices_](https://trishagee.github.io/post/code_review_best_practices/) by Trisha Gee
