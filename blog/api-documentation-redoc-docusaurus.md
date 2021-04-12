@@ -119,3 +119,7 @@ I'm pretty happy with how this combination of tools has worked on my projects th
 
 - Using [Docusaurus blog functionality](https://v2.docusaurus.io/docs/blog) to add a changelog for the API.
 - Using [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) to enable trying API operations from the docs without pointing at a live service.
+
+- - -
+
+**Update on 12 April 2021:** Turns out there's [a bit of demand](https://github.com/facebook/docusaurus/issues/638) for this. [Rohit Gohri](https://github.com/rohit-gohri) has pulled it together into [a Docusaurus preset](https://www.npmjs.com/package/redocusaurus) that you can pull into your project fairly easily.
