@@ -1,6 +1,7 @@
 ---
 permalink: "2019/09/03/better-pull-requests/"
 date: 2019-09-03
+updated: 2021-04-22
 title: Better Pull Requests
 summary:
   I spend a lot of my time on pull requests. I have a few thoughts about what works and what doesn't in the pull request process.
@@ -31,18 +32,6 @@ In reality you'll sometimes need to do a large change that takes several days or
 For example, you might be doing some [preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html) to lay the groundwork for your new functionality, or bolstering test coverage of existing behaviour to give you the confidence to start making changes. Both are good candidates for a pull request in their own right.
 
 Once you get into actually adding your new functionality, keep to this mantra of small and incremental changes. Try working from the outside in --- starting with the UI or the API entry point, stubbing the next layer in as you go, and using feature flags to keep it hidden until it's ready. As well as preventing you from drifting off the mainline and/or doing too-big pull requests, this approach gives you a chance to tag expert reviewers when working in their area, without dragging in too many people at a time.
-
-### Tell the story with your commits (sometimes)
-
-If you _do_ end up with something a bit big, it can be hard for reviewers to know where to start with a big diff.
-
-This is where your commits can be really helpful and tell a lot of the story for you. However, this does depend on having a sequence of commits that form a coherent narrative. This sounds like a lot of effort, but you don't have to obsess about as you go along; it's a by-product of committing frequently.
-
-By frequently, I don't mean daily or hourly, I mean with _every change_ you make, in a tight loop of "compile, test, commit"[^compiletestcommit]. By the time you're ready to open your pull request, you'll have a list of commits that is probably too granular and a bit messy, but you can use [interactive rebase](https://tgvashworth.com/2014/02/24/rebase-you-interactively-for-great-good.html) to clean up and consolidate[^moarrebase] into something that's useful for a reviewer to follow.
-
-[^compiletestcommit]: There are [variations](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864), but you get the idea.
-
-[^moarrebase]: That post by Tom Ashworth includes a great tutorial of using interactive rebase to edit each commit in detail, but mostly I find that a mixture of `fixup` and `reword` is enough to get my commits in shape for review.
 
 ### Housekeeping
 
@@ -76,7 +65,7 @@ If there's one person whose approval you _really_ want before you're happy to me
 
 ### Manage expectations
 
-There will be times when you aren't going to review a pull request you've been tagged on. It might be that you're too busy to give it the proper attention in a timely manner, or that you don't feel you're best-placed to give a meaningful review, given your skills/knowledge etc. Either way, say so to the requester (either in the comments or privately, as you see fit) and nominate one or two other people to review instead.
+There will be times when you aren't going to review a pull request you've been tagged on. It might be that you're too busy to give it the proper attention in a timely manner, or that you don't feel you're best-placed to give a meaningful review, given your skills/knowledge etc. Either way, say so.
 
 ### Critique with care
 
@@ -88,7 +77,7 @@ When you do come to leave some critical feedback, think carefully about what to 
 
 Many comments or suggestions you add will be subjective to some degree, so it's good to provide information that supports your point of view. For example, if you're pointing out that some internal standard or convention is being broken, link to where the standards are documented, and to a conforming example elsewhere in the codebase. If you are suggesting a different tool or technique for something, link to an article that explains it.
 
-Also, don't forget about positive feedback. Yes, the main purpose of the review is to address any shortcomings before merging, but it's also a chance for you to call out any good stuff you see. The odd "This is a nice pattern, would like to see more of it" won't do any harm, and might provide a bit of balance if you have left some more critical feedback elsewhere.
+Also, don't forget about positive feedback. As much as anything else, a review is a chance for you to call out any good stuff you see. The odd "This is a nice pattern, would like to see more of it" won't do any harm, and might provide a bit of balance if you have left some more critical feedback elsewhere.
 
 ### Automate
 
