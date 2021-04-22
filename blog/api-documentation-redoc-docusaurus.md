@@ -1,5 +1,6 @@
 ---
 date: 2020-11-23
+updated: 2021-04-12
 title: Richer API documentation with Redoc and Docusaurus
 summary:
   I’ve been focusing a lot on APIs this year, and it's been a lot of fun. With documentation being really important for an audience of developers, I've been using Redoc to document the API itself and building a full site around it with Docusaurus.
